@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		EFA1A042263B1A4C00E6F692 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1A041263B1A4C00E6F692 /* GameViewController.swift */; };
 		EFA1A045263B1A4C00E6F692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A043263B1A4C00E6F692 /* Main.storyboard */; };
 		EFA1A047263B1A4D00E6F692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A046263B1A4D00E6F692 /* Assets.xcassets */; };
+		EFA1A051263B21B700E6F692 /* SKTiledKit in Frameworks */ = {isa = PBXBuildFile; productRef = EFA1A050263B21B700E6F692 /* SKTiledKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA1A051263B21B700E6F692 /* SKTiledKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = ChimpAndThePlumber;
+			packageProductDependencies = (
+				EFA1A050263B21B700E6F692 /* SKTiledKit */,
+			);
 			productName = ChimpAndThePlumber;
 			productReference = EFA1A036263B1A4C00E6F692 /* ChimpAndThePlumber.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +118,9 @@
 				Base,
 			);
 			mainGroup = EFA1A02D263B1A4C00E6F692;
+			packageReferences = (
+				EFA1A04F263B21B700E6F692 /* XCRemoteSwiftPackageReference "SKTiledKit" */,
+			);
 			productRefGroup = EFA1A037263B1A4C00E6F692 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -337,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EFA1A04F263B21B700E6F692 /* XCRemoteSwiftPackageReference "SKTiledKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftStudies/SKTiledKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EFA1A050263B21B700E6F692 /* SKTiledKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFA1A04F263B21B700E6F692 /* XCRemoteSwiftPackageReference "SKTiledKit" */;
+			productName = SKTiledKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EFA1A02E263B1A4C00E6F692 /* Project object */;
 }
