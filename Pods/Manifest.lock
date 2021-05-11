@@ -1,0 +1,16 @@
+PODS:
+  - SKTiled (1.22)
+
+DEPENDENCIES:
+  - SKTiled (~> 1.22)
+
+SPEC REPOS:
+  trunk:
+    - SKTiled
+
+SPEC CHECKSUMS:
+  SKTiled: dce4e8ec4fead466feefb956b5d32166535e3a2d
+
+PODFILE CHECKSUM: f3cf515b9056b07851ff312acf4ed12cf2377dc1
+
+COCOAPODS: 1.10.1

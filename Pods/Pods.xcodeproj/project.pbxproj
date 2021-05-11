@@ -1,0 +1,740 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07DEFAFF267DF623CB8CD68B528C4E7B /* TiledGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8EDD5EC64E5F5E1CADEAF010687F4D /* TiledGlobals.swift */; };
+		0A6799CBBF6C0D6B326F443E06E0C226 /* SKTiled-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7716189CFBA2DD02572BFA7AB4F9FAC5 /* SKTiled-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B4F6245397A581515F5EE2BCC847C38 /* SKTiledObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EA2227C1E06C20FFD1513B8B9D1F02 /* SKTiledObject.swift */; };
+		2055C8D22397BE8C90D0AE37AC984B99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		2A641484BE7FC119D16CCE2E3D3DE4B6 /* SKObjectGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CDD8C51ADC5A29652D5F4C5E52605A /* SKObjectGroup.swift */; };
+		2A7725A99F86C31F4C9B9651EE160757 /* TileAnimationFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC0FB2D56A80077C22C689E2806FAA /* TileAnimationFrame.swift */; };
+		2D24FEB4C1A4C32A004688D275E35E91 /* TileObjectProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559DFBF2F10EAFB4955DDDCD037A3444 /* TileObjectProxy.swift */; };
+		2F19DB9CC1B28E672DAB496051DE26F5 /* SKTilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374A006BEA8D0A25BEE81828CA9E09C /* SKTilemap.swift */; };
+		31F88A66DFA7E7F4C87693A10A705939 /* SKTilemapParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF53911BBE6F95E4F094C6C5D0C34CA2 /* SKTilemapParser.swift */; };
+		33250FDD99EFB9ECA8B9D36A5A520F34 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DBC822948B037A11AB5FDB9E9F43FE /* Array2D.swift */; };
+		3DE0A0D0C0F4BFE5C509857754DF8743 /* SKTiled+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A907767F34189E845E94B2754C6B94 /* SKTiled+Properties.swift */; };
+		410E97B27583218680CEB4923911C842 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CC87B802EF31626E957FEB4DACA719 /* Logging.swift */; };
+		46300C483CFFE8AFFFF511440D41C34F /* TilesetDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B7D6DBDC3AE014C6206438DB05CBD /* TilesetDataSource.swift */; };
+		48681609BC4210004ED1F939B173C194 /* SKTiled+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3C819D1E44C0A88C65FC272AD2196 /* SKTiled+Extensions.swift */; };
+		504BEE2A5929CB2B9527224B8D6CFD46 /* TileDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18056B91B892E261CEB5FD1A705080 /* TileDataStorage.swift */; };
+		5504BEB67CBBCCCF79B6A69633355A94 /* TileObjectOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177C1EA9110A915092C38CA627F3D8A /* TileObjectOverlay.swift */; };
+		5820F57997455B6AAF1A298499F0491B /* TiledBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34097D371A21E04E3CCE1AEE2B5CC98F /* TiledBackgroundLayer.swift */; };
+		5C4801BBE0439685EED3D04268C6E493 /* SKTilesetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB160AEB8D725A97E690E8697C6264D /* SKTilesetData.swift */; };
+		5D49E745440234CD9E0BB6019B7FB1C6 /* SKTileObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF490EE821BC49E9F3000AE18759DE9D /* SKTileObject.swift */; };
+		5DD46017552DBB7EBB4AD50C6A52E819 /* SKImageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953F46A66C3985BEAC4E87966B257463 /* SKImageLayer.swift */; };
+		62656D064D684B61114B2C26F46CE248 /* TiledDebugDrawNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DF34B362A59A8FF1972B2BB23A24CE /* TiledDebugDrawNode.swift */; };
+		6CB457E1AC82308EBF4D36D80AF15628 /* SKTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368F70B04FA29F051D9B1240E79A35A /* SKTile.swift */; };
+		77258CABE08D3F8292B727494284783D /* AnchorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02AD914188CAD1485737C2A22BC1142 /* AnchorNode.swift */; };
+		78F758EBBE83793E8542D2D7B52CB237 /* SKTiled+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D65550F82A2703EAD018A00FC4AEA7 /* SKTiled+Debug.swift */; };
+		7B9B65F75D4F5B5FA2E18C17505BD8F9 /* SKGroupLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8D7351408A4F3A2698D04B4B71D0A /* SKGroupLayer.swift */; };
+		7ECAE147D3618ECEFA19244F0A86F0BD /* Pods-ChimpAndThePlumber-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40697062B2349CFC1487D8A3CAAF52 /* Pods-ChimpAndThePlumber-dummy.m */; };
+		7F161A7846AB815F6283F3AF8C04D7FB /* SKTiledSceneCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DABDC72317801248448E08005CF05B /* SKTiledSceneCamera.swift */; };
+		8348DCC1C718A72D5A6BD872F99FAE50 /* SKTiled+GameplayKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D37EE1D0E88FA93E457A99BC84EB9 /* SKTiled+GameplayKit.swift */; };
+		8607EBCACEDD74B16D9FA9FC1FDD610F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		8CF401E2990F0D09EE7A8A77729BCB52 /* TilemapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631D4CAF9AE71592E853A79409322035 /* TilemapDelegate.swift */; };
+		8E26797BD5BA99597ABB8DD8215E28D9 /* TiledSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C338DAC1FF2F3DAD6D2D39684415431 /* TiledSceneDelegate.swift */; };
+		9CF6F6A9194A4C6B33AA479295D39EA6 /* SKTiled-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C80D4B8D0B0E09224DA88FFED2E0D7 /* SKTiled-dummy.m */; };
+		9FC4FA11A3FF81BB4572254176037132 /* SKTiledLayerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA1D2231E5A1ADC6A24434AA3AC6FD3 /* SKTiledLayerObject.swift */; };
+		A0109219327FAE3BFE43FB6C97E3A2C3 /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E81428494786711EC92E060CC60600 /* ThreadSafeArray.swift */; };
+		CB6B4A60F9B290AB8FDB9D70ED41C4DA /* SKTileLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D894559E3791C63616641969F9863A /* SKTileLayer.swift */; };
+		D62F9A3611B932CBA04C3D06AD2DEF41 /* TiledSceneCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A627119858480A347C2F97504FFD9C48 /* TiledSceneCameraDelegate.swift */; };
+		E781401E9DCE0D49FE4EEB27A5FA940E /* TileCollisionShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B398FB82FFB6D2BBC73FB52FD0902 /* TileCollisionShape.swift */; };
+		EA41B09E8FDE045423B88C96251D527F /* SKTiledScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FCA16604141D9E7F298F7C26D614C /* SKTiledScene.swift */; };
+		EB9BBB0A9C82A029FE3839F99EBD1631 /* Pods-ChimpAndThePlumber-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 19E4D5B9AF145422E2621A347DA75365 /* Pods-ChimpAndThePlumber-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F820F47F7919F828B3B910E79CF04346 /* SKTileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBD11EA262529DA0FBE97B4AC056160 /* SKTileset.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		99ECEE790CB5550DD08C02A15D874199 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1A5D8454E418A7E6514B409FDDEF92B;
+			remoteInfo = SKTiled;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03CDD8C51ADC5A29652D5F4C5E52605A /* SKObjectGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKObjectGroup.swift; path = Sources/SKObjectGroup.swift; sourceTree = "<group>"; };
+		04DABDC72317801248448E08005CF05B /* SKTiledSceneCamera.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTiledSceneCamera.swift; path = Sources/SKTiledSceneCamera.swift; sourceTree = "<group>"; };
+		09D894559E3791C63616641969F9863A /* SKTileLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTileLayer.swift; path = Sources/SKTileLayer.swift; sourceTree = "<group>"; };
+		09E1C91C70F3DBF7168CBEFDC87CBA80 /* Pods-ChimpAndThePlumber-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChimpAndThePlumber-acknowledgements.plist"; sourceTree = "<group>"; };
+		0A8EDD5EC64E5F5E1CADEAF010687F4D /* TiledGlobals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TiledGlobals.swift; path = Sources/TiledGlobals.swift; sourceTree = "<group>"; };
+		0AA8D7351408A4F3A2698D04B4B71D0A /* SKGroupLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKGroupLayer.swift; path = Sources/SKGroupLayer.swift; sourceTree = "<group>"; };
+		10E81428494786711EC92E060CC60600 /* ThreadSafeArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadSafeArray.swift; path = Sources/ThreadSafeArray.swift; sourceTree = "<group>"; };
+		1177C1EA9110A915092C38CA627F3D8A /* TileObjectOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TileObjectOverlay.swift; path = Sources/TileObjectOverlay.swift; sourceTree = "<group>"; };
+		19E4D5B9AF145422E2621A347DA75365 /* Pods-ChimpAndThePlumber-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ChimpAndThePlumber-umbrella.h"; sourceTree = "<group>"; };
+		1D0430E5F1D9C3A91DC7706CE67CAB2D /* SKTiled-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SKTiled-Info.plist"; sourceTree = "<group>"; };
+		227FCA16604141D9E7F298F7C26D614C /* SKTiledScene.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTiledScene.swift; path = Sources/SKTiledScene.swift; sourceTree = "<group>"; };
+		2C338DAC1FF2F3DAD6D2D39684415431 /* TiledSceneDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TiledSceneDelegate.swift; path = Sources/TiledSceneDelegate.swift; sourceTree = "<group>"; };
+		2EADE5B656F3BDBCA30D939C5521833C /* Pods-ChimpAndThePlumber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChimpAndThePlumber.release.xcconfig"; sourceTree = "<group>"; };
+		34097D371A21E04E3CCE1AEE2B5CC98F /* TiledBackgroundLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TiledBackgroundLayer.swift; path = Sources/TiledBackgroundLayer.swift; sourceTree = "<group>"; };
+		3784CBB81B5E70B97F7FAEC6660D8802 /* Pods-ChimpAndThePlumber-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChimpAndThePlumber-Info.plist"; sourceTree = "<group>"; };
+		4CB160AEB8D725A97E690E8697C6264D /* SKTilesetData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTilesetData.swift; path = Sources/SKTilesetData.swift; sourceTree = "<group>"; };
+		4E4D37EE1D0E88FA93E457A99BC84EB9 /* SKTiled+GameplayKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKTiled+GameplayKit.swift"; path = "Sources/SKTiled+GameplayKit.swift"; sourceTree = "<group>"; };
+		4EBD11EA262529DA0FBE97B4AC056160 /* SKTileset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTileset.swift; path = Sources/SKTileset.swift; sourceTree = "<group>"; };
+		53D65550F82A2703EAD018A00FC4AEA7 /* SKTiled+Debug.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKTiled+Debug.swift"; path = "Sources/SKTiled+Debug.swift"; sourceTree = "<group>"; };
+		559DFBF2F10EAFB4955DDDCD037A3444 /* TileObjectProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TileObjectProxy.swift; path = Sources/TileObjectProxy.swift; sourceTree = "<group>"; };
+		55CC87B802EF31626E957FEB4DACA719 /* Logging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = Sources/Logging.swift; sourceTree = "<group>"; };
+		631D4CAF9AE71592E853A79409322035 /* TilemapDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TilemapDelegate.swift; path = Sources/TilemapDelegate.swift; sourceTree = "<group>"; };
+		6B18056B91B892E261CEB5FD1A705080 /* TileDataStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TileDataStorage.swift; path = Sources/TileDataStorage.swift; sourceTree = "<group>"; };
+		6EA1D2231E5A1ADC6A24434AA3AC6FD3 /* SKTiledLayerObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTiledLayerObject.swift; path = Sources/SKTiledLayerObject.swift; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		745C881F37F97802F8438018C5B284BE /* SKTiled.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SKTiled.framework; path = SKTiled.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7716189CFBA2DD02572BFA7AB4F9FAC5 /* SKTiled-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKTiled-umbrella.h"; sourceTree = "<group>"; };
+		7C7DDCD2C1667C27501EE33528B04FFA /* SKTiled.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKTiled.debug.xcconfig; sourceTree = "<group>"; };
+		953F46A66C3985BEAC4E87966B257463 /* SKImageLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKImageLayer.swift; path = Sources/SKImageLayer.swift; sourceTree = "<group>"; };
+		98A907767F34189E845E94B2754C6B94 /* SKTiled+Properties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKTiled+Properties.swift"; path = "Sources/SKTiled+Properties.swift"; sourceTree = "<group>"; };
+		9B00E7C6FDC11E3BB72BEBB19B296370 /* Pods-ChimpAndThePlumber-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChimpAndThePlumber-frameworks.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A627119858480A347C2F97504FFD9C48 /* TiledSceneCameraDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TiledSceneCameraDelegate.swift; path = Sources/TiledSceneCameraDelegate.swift; sourceTree = "<group>"; };
+		A782665720C5DBC7230148E2503554DA /* Pods-ChimpAndThePlumber-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ChimpAndThePlumber-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AB3928757A7E5C4E66BD3ABB0E729930 /* SKTiled.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SKTiled.modulemap; sourceTree = "<group>"; };
+		B0F5EC5E82637EE0029C648CF2A5D45A /* Pods_ChimpAndThePlumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ChimpAndThePlumber.framework; path = "Pods-ChimpAndThePlumber.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3C3C819D1E44C0A88C65FC272AD2196 /* SKTiled+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SKTiled+Extensions.swift"; path = "Sources/SKTiled+Extensions.swift"; sourceTree = "<group>"; };
+		B8DF34B362A59A8FF1972B2BB23A24CE /* TiledDebugDrawNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TiledDebugDrawNode.swift; path = Sources/TiledDebugDrawNode.swift; sourceTree = "<group>"; };
+		B9EA2227C1E06C20FFD1513B8B9D1F02 /* SKTiledObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTiledObject.swift; path = Sources/SKTiledObject.swift; sourceTree = "<group>"; };
+		BF490EE821BC49E9F3000AE18759DE9D /* SKTileObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTileObject.swift; path = Sources/SKTileObject.swift; sourceTree = "<group>"; };
+		C73B398FB82FFB6D2BBC73FB52FD0902 /* TileCollisionShape.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TileCollisionShape.swift; path = Sources/TileCollisionShape.swift; sourceTree = "<group>"; };
+		CBCD2D984D9E614F381E0C5BF5A9BFE6 /* Pods-ChimpAndThePlumber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChimpAndThePlumber.debug.xcconfig"; sourceTree = "<group>"; };
+		D02AD914188CAD1485737C2A22BC1142 /* AnchorNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnchorNode.swift; path = Sources/AnchorNode.swift; sourceTree = "<group>"; };
+		D1C80D4B8D0B0E09224DA88FFED2E0D7 /* SKTiled-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SKTiled-dummy.m"; sourceTree = "<group>"; };
+		D4DBC822948B037A11AB5FDB9E9F43FE /* Array2D.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Array2D.swift; path = Sources/Array2D.swift; sourceTree = "<group>"; };
+		DD40697062B2349CFC1487D8A3CAAF52 /* Pods-ChimpAndThePlumber-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ChimpAndThePlumber-dummy.m"; sourceTree = "<group>"; };
+		E025EE58C95E4D33A23A5B5928F3730F /* SKTiled.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKTiled.release.xcconfig; sourceTree = "<group>"; };
+		E0EC0FB2D56A80077C22C689E2806FAA /* TileAnimationFrame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TileAnimationFrame.swift; path = Sources/TileAnimationFrame.swift; sourceTree = "<group>"; };
+		E374A006BEA8D0A25BEE81828CA9E09C /* SKTilemap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTilemap.swift; path = Sources/SKTilemap.swift; sourceTree = "<group>"; };
+		EF1EC1E329656C7F92F7E2E7EF4B3DE6 /* Pods-ChimpAndThePlumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ChimpAndThePlumber.modulemap"; sourceTree = "<group>"; };
+		EF53911BBE6F95E4F094C6C5D0C34CA2 /* SKTilemapParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTilemapParser.swift; path = Sources/SKTilemapParser.swift; sourceTree = "<group>"; };
+		F368F70B04FA29F051D9B1240E79A35A /* SKTile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SKTile.swift; path = Sources/SKTile.swift; sourceTree = "<group>"; };
+		F7A7BE93C0AD22F6552C7ABD5E7A429B /* SKTiled-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKTiled-prefix.pch"; sourceTree = "<group>"; };
+		FB3B7D6DBDC3AE014C6206438DB05CBD /* TilesetDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TilesetDataSource.swift; path = Sources/TilesetDataSource.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79760F32940C50B7A61E541D02730A00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2055C8D22397BE8C90D0AE37AC984B99 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A732DD140C38A38FE9FE62232CCCD88B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8607EBCACEDD74B16D9FA9FC1FDD610F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05C766BF39D1391B04B8059C5DE0DD8A /* SKTiled */ = {
+			isa = PBXGroup;
+			children = (
+				D02AD914188CAD1485737C2A22BC1142 /* AnchorNode.swift */,
+				D4DBC822948B037A11AB5FDB9E9F43FE /* Array2D.swift */,
+				55CC87B802EF31626E957FEB4DACA719 /* Logging.swift */,
+				0AA8D7351408A4F3A2698D04B4B71D0A /* SKGroupLayer.swift */,
+				953F46A66C3985BEAC4E87966B257463 /* SKImageLayer.swift */,
+				03CDD8C51ADC5A29652D5F4C5E52605A /* SKObjectGroup.swift */,
+				F368F70B04FA29F051D9B1240E79A35A /* SKTile.swift */,
+				53D65550F82A2703EAD018A00FC4AEA7 /* SKTiled+Debug.swift */,
+				B3C3C819D1E44C0A88C65FC272AD2196 /* SKTiled+Extensions.swift */,
+				4E4D37EE1D0E88FA93E457A99BC84EB9 /* SKTiled+GameplayKit.swift */,
+				98A907767F34189E845E94B2754C6B94 /* SKTiled+Properties.swift */,
+				6EA1D2231E5A1ADC6A24434AA3AC6FD3 /* SKTiledLayerObject.swift */,
+				B9EA2227C1E06C20FFD1513B8B9D1F02 /* SKTiledObject.swift */,
+				227FCA16604141D9E7F298F7C26D614C /* SKTiledScene.swift */,
+				04DABDC72317801248448E08005CF05B /* SKTiledSceneCamera.swift */,
+				09D894559E3791C63616641969F9863A /* SKTileLayer.swift */,
+				E374A006BEA8D0A25BEE81828CA9E09C /* SKTilemap.swift */,
+				EF53911BBE6F95E4F094C6C5D0C34CA2 /* SKTilemapParser.swift */,
+				BF490EE821BC49E9F3000AE18759DE9D /* SKTileObject.swift */,
+				4EBD11EA262529DA0FBE97B4AC056160 /* SKTileset.swift */,
+				4CB160AEB8D725A97E690E8697C6264D /* SKTilesetData.swift */,
+				10E81428494786711EC92E060CC60600 /* ThreadSafeArray.swift */,
+				E0EC0FB2D56A80077C22C689E2806FAA /* TileAnimationFrame.swift */,
+				C73B398FB82FFB6D2BBC73FB52FD0902 /* TileCollisionShape.swift */,
+				6B18056B91B892E261CEB5FD1A705080 /* TileDataStorage.swift */,
+				34097D371A21E04E3CCE1AEE2B5CC98F /* TiledBackgroundLayer.swift */,
+				B8DF34B362A59A8FF1972B2BB23A24CE /* TiledDebugDrawNode.swift */,
+				0A8EDD5EC64E5F5E1CADEAF010687F4D /* TiledGlobals.swift */,
+				A627119858480A347C2F97504FFD9C48 /* TiledSceneCameraDelegate.swift */,
+				2C338DAC1FF2F3DAD6D2D39684415431 /* TiledSceneDelegate.swift */,
+				631D4CAF9AE71592E853A79409322035 /* TilemapDelegate.swift */,
+				1177C1EA9110A915092C38CA627F3D8A /* TileObjectOverlay.swift */,
+				559DFBF2F10EAFB4955DDDCD037A3444 /* TileObjectProxy.swift */,
+				FB3B7D6DBDC3AE014C6206438DB05CBD /* TilesetDataSource.swift */,
+				5499A04DA7D5DF94EC8D2C23098712C5 /* Support Files */,
+			);
+			name = SKTiled;
+			path = SKTiled;
+			sourceTree = "<group>";
+		};
+		14CDD224676968F0D5AA622A05A2F9DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0F5EC5E82637EE0029C648CF2A5D45A /* Pods_ChimpAndThePlumber.framework */,
+				745C881F37F97802F8438018C5B284BE /* SKTiled.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A58FC02CA13375E23FA07C63F891964 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05C766BF39D1391B04B8059C5DE0DD8A /* SKTiled */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5499A04DA7D5DF94EC8D2C23098712C5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB3928757A7E5C4E66BD3ABB0E729930 /* SKTiled.modulemap */,
+				D1C80D4B8D0B0E09224DA88FFED2E0D7 /* SKTiled-dummy.m */,
+				1D0430E5F1D9C3A91DC7706CE67CAB2D /* SKTiled-Info.plist */,
+				F7A7BE93C0AD22F6552C7ABD5E7A429B /* SKTiled-prefix.pch */,
+				7716189CFBA2DD02572BFA7AB4F9FAC5 /* SKTiled-umbrella.h */,
+				7C7DDCD2C1667C27501EE33528B04FFA /* SKTiled.debug.xcconfig */,
+				E025EE58C95E4D33A23A5B5928F3730F /* SKTiled.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SKTiled";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A2A6F29DB5AF4128154255CA33542E67 /* Pods-ChimpAndThePlumber */ = {
+			isa = PBXGroup;
+			children = (
+				EF1EC1E329656C7F92F7E2E7EF4B3DE6 /* Pods-ChimpAndThePlumber.modulemap */,
+				A782665720C5DBC7230148E2503554DA /* Pods-ChimpAndThePlumber-acknowledgements.markdown */,
+				09E1C91C70F3DBF7168CBEFDC87CBA80 /* Pods-ChimpAndThePlumber-acknowledgements.plist */,
+				DD40697062B2349CFC1487D8A3CAAF52 /* Pods-ChimpAndThePlumber-dummy.m */,
+				9B00E7C6FDC11E3BB72BEBB19B296370 /* Pods-ChimpAndThePlumber-frameworks.sh */,
+				3784CBB81B5E70B97F7FAEC6660D8802 /* Pods-ChimpAndThePlumber-Info.plist */,
+				19E4D5B9AF145422E2621A347DA75365 /* Pods-ChimpAndThePlumber-umbrella.h */,
+				CBCD2D984D9E614F381E0C5BF5A9BFE6 /* Pods-ChimpAndThePlumber.debug.xcconfig */,
+				2EADE5B656F3BDBCA30D939C5521833C /* Pods-ChimpAndThePlumber.release.xcconfig */,
+			);
+			name = "Pods-ChimpAndThePlumber";
+			path = "Target Support Files/Pods-ChimpAndThePlumber";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				4A58FC02CA13375E23FA07C63F891964 /* Pods */,
+				14CDD224676968F0D5AA622A05A2F9DE /* Products */,
+				FE7C8E6EC1C47D82A838B31566FD1922 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE7C8E6EC1C47D82A838B31566FD1922 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2A6F29DB5AF4128154255CA33542E67 /* Pods-ChimpAndThePlumber */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9289A80580C92E2EA5E035EDFD01EF00 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB9BBB0A9C82A029FE3839F99EBD1631 /* Pods-ChimpAndThePlumber-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9AA1AA9515412E974465406097D6FD6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A6799CBBF6C0D6B326F443E06E0C226 /* SKTiled-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		69FC51FA7FFBD31AA8B571E80A3BB6EE /* Pods-ChimpAndThePlumber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 105101261F30D5FBE10F3A3B9E93D2A9 /* Build configuration list for PBXNativeTarget "Pods-ChimpAndThePlumber" */;
+			buildPhases = (
+				9289A80580C92E2EA5E035EDFD01EF00 /* Headers */,
+				6E3413EA714D6A9424D6A1D676F64A3E /* Sources */,
+				79760F32940C50B7A61E541D02730A00 /* Frameworks */,
+				0F4352C8F5DE9DB9DAE01E0CDE9E469B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDCEF402939A517F90EC33A6F5543D95 /* PBXTargetDependency */,
+			);
+			name = "Pods-ChimpAndThePlumber";
+			productName = "Pods-ChimpAndThePlumber";
+			productReference = B0F5EC5E82637EE0029C648CF2A5D45A /* Pods_ChimpAndThePlumber.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A1A5D8454E418A7E6514B409FDDEF92B /* SKTiled */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A474E757EF03FBC58BDA107616C5C60 /* Build configuration list for PBXNativeTarget "SKTiled" */;
+			buildPhases = (
+				E9AA1AA9515412E974465406097D6FD6 /* Headers */,
+				AC77B9741C53EDD1FBE3CAF32CD8C35A /* Sources */,
+				A732DD140C38A38FE9FE62232CCCD88B /* Frameworks */,
+				505E410104102BCC5A899FED09EA7E0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SKTiled;
+			productName = SKTiled;
+			productReference = 745C881F37F97802F8438018C5B284BE /* SKTiled.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 14CDD224676968F0D5AA622A05A2F9DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69FC51FA7FFBD31AA8B571E80A3BB6EE /* Pods-ChimpAndThePlumber */,
+				A1A5D8454E418A7E6514B409FDDEF92B /* SKTiled */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F4352C8F5DE9DB9DAE01E0CDE9E469B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505E410104102BCC5A899FED09EA7E0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E3413EA714D6A9424D6A1D676F64A3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ECAE147D3618ECEFA19244F0A86F0BD /* Pods-ChimpAndThePlumber-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC77B9741C53EDD1FBE3CAF32CD8C35A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77258CABE08D3F8292B727494284783D /* AnchorNode.swift in Sources */,
+				33250FDD99EFB9ECA8B9D36A5A520F34 /* Array2D.swift in Sources */,
+				410E97B27583218680CEB4923911C842 /* Logging.swift in Sources */,
+				7B9B65F75D4F5B5FA2E18C17505BD8F9 /* SKGroupLayer.swift in Sources */,
+				5DD46017552DBB7EBB4AD50C6A52E819 /* SKImageLayer.swift in Sources */,
+				2A641484BE7FC119D16CCE2E3D3DE4B6 /* SKObjectGroup.swift in Sources */,
+				6CB457E1AC82308EBF4D36D80AF15628 /* SKTile.swift in Sources */,
+				78F758EBBE83793E8542D2D7B52CB237 /* SKTiled+Debug.swift in Sources */,
+				48681609BC4210004ED1F939B173C194 /* SKTiled+Extensions.swift in Sources */,
+				8348DCC1C718A72D5A6BD872F99FAE50 /* SKTiled+GameplayKit.swift in Sources */,
+				3DE0A0D0C0F4BFE5C509857754DF8743 /* SKTiled+Properties.swift in Sources */,
+				9CF6F6A9194A4C6B33AA479295D39EA6 /* SKTiled-dummy.m in Sources */,
+				9FC4FA11A3FF81BB4572254176037132 /* SKTiledLayerObject.swift in Sources */,
+				1B4F6245397A581515F5EE2BCC847C38 /* SKTiledObject.swift in Sources */,
+				EA41B09E8FDE045423B88C96251D527F /* SKTiledScene.swift in Sources */,
+				7F161A7846AB815F6283F3AF8C04D7FB /* SKTiledSceneCamera.swift in Sources */,
+				CB6B4A60F9B290AB8FDB9D70ED41C4DA /* SKTileLayer.swift in Sources */,
+				2F19DB9CC1B28E672DAB496051DE26F5 /* SKTilemap.swift in Sources */,
+				31F88A66DFA7E7F4C87693A10A705939 /* SKTilemapParser.swift in Sources */,
+				5D49E745440234CD9E0BB6019B7FB1C6 /* SKTileObject.swift in Sources */,
+				F820F47F7919F828B3B910E79CF04346 /* SKTileset.swift in Sources */,
+				5C4801BBE0439685EED3D04268C6E493 /* SKTilesetData.swift in Sources */,
+				A0109219327FAE3BFE43FB6C97E3A2C3 /* ThreadSafeArray.swift in Sources */,
+				2A7725A99F86C31F4C9B9651EE160757 /* TileAnimationFrame.swift in Sources */,
+				E781401E9DCE0D49FE4EEB27A5FA940E /* TileCollisionShape.swift in Sources */,
+				504BEE2A5929CB2B9527224B8D6CFD46 /* TileDataStorage.swift in Sources */,
+				5820F57997455B6AAF1A298499F0491B /* TiledBackgroundLayer.swift in Sources */,
+				62656D064D684B61114B2C26F46CE248 /* TiledDebugDrawNode.swift in Sources */,
+				07DEFAFF267DF623CB8CD68B528C4E7B /* TiledGlobals.swift in Sources */,
+				D62F9A3611B932CBA04C3D06AD2DEF41 /* TiledSceneCameraDelegate.swift in Sources */,
+				8E26797BD5BA99597ABB8DD8215E28D9 /* TiledSceneDelegate.swift in Sources */,
+				8CF401E2990F0D09EE7A8A77729BCB52 /* TilemapDelegate.swift in Sources */,
+				5504BEB67CBBCCCF79B6A69633355A94 /* TileObjectOverlay.swift in Sources */,
+				2D24FEB4C1A4C32A004688D275E35E91 /* TileObjectProxy.swift in Sources */,
+				46300C483CFFE8AFFFF511440D41C34F /* TilesetDataSource.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDCEF402939A517F90EC33A6F5543D95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SKTiled;
+			target = A1A5D8454E418A7E6514B409FDDEF92B /* SKTiled */;
+			targetProxy = 99ECEE790CB5550DD08C02A15D874199 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5DD3AC66B83B2CE70C1D46F0C50F9AA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C7DDCD2C1667C27501EE33528B04FFA /* SKTiled.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SKTiled/SKTiled-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SKTiled/SKTiled-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SKTiled/SKTiled.modulemap";
+				PRODUCT_MODULE_NAME = SKTiled;
+				PRODUCT_NAME = SKTiled;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		71243899B61152433AAE34EE86456EE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		75D70EEEA0A456E14F7338A7F342964E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		ADEFBEC20B2E9778E5E6BCE547F2509F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EADE5B656F3BDBCA30D939C5521833C /* Pods-ChimpAndThePlumber.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ChimpAndThePlumber/Pods-ChimpAndThePlumber-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChimpAndThePlumber/Pods-ChimpAndThePlumber.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DFB1E6C4E928AE09D69F4E9ACBFF0964 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E025EE58C95E4D33A23A5B5928F3730F /* SKTiled.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SKTiled/SKTiled-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SKTiled/SKTiled-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SKTiled/SKTiled.modulemap";
+				PRODUCT_MODULE_NAME = SKTiled;
+				PRODUCT_NAME = SKTiled;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E775007839A225F32AD7623A4753820F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBCD2D984D9E614F381E0C5BF5A9BFE6 /* Pods-ChimpAndThePlumber.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ChimpAndThePlumber/Pods-ChimpAndThePlumber-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChimpAndThePlumber/Pods-ChimpAndThePlumber.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		105101261F30D5FBE10F3A3B9E93D2A9 /* Build configuration list for PBXNativeTarget "Pods-ChimpAndThePlumber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E775007839A225F32AD7623A4753820F /* Debug */,
+				ADEFBEC20B2E9778E5E6BCE547F2509F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75D70EEEA0A456E14F7338A7F342964E /* Debug */,
+				71243899B61152433AAE34EE86456EE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A474E757EF03FBC58BDA107616C5C60 /* Build configuration list for PBXNativeTarget "SKTiled" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DD3AC66B83B2CE70C1D46F0C50F9AA1 /* Debug */,
+				DFB1E6C4E928AE09D69F4E9ACBFF0964 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
