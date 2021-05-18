@@ -6,5 +6,4 @@ target 'ChimpAndThePlumber' do
   use_frameworks!
 
   # Pods for ChimpAndThePlumber
-  pod 'SKTiled', '~> 1.22'
 end

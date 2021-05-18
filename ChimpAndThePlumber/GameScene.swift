@@ -6,19 +6,29 @@
 //
 
 import SpriteKit
-import SKTiled
 import GameplayKit
 
 class GameScene: SKScene {
 
     var entities = [GKEntity]()
     var graphs = [String: GKGraph]()
-
+    lazy var chimpSheet : SpriteSheet = {
+        return SpriteSheet(texture: SKTexture(imageNamed: "DK"), rows: 1, columns: 11, spacing: 1, margin: 1)
+    }()
+    lazy var chimpSprite : SKSpriteNode = { [weak self] in
+        return SKSpriteNode(texture: self?.chimpSheet.textureForColumn(column: 0, row: 0))
+    }()
+    lazy var playerSheet : SpriteSheet = {
+        return SpriteSheet(texture: SKTexture(imageNamed: "DK"), rows: 1, columns: 11, spacing: 1, margin: 1)
+    }()
+    lazy var playerSprite : SKSpriteNode = { [weak self] in
+        return SKSpriteNode(texture: self?.playerSheet.textureForColumn(column: 0, row: 0))
+    }()
+    
     private var lastUpdateTime: TimeInterval = 0
     private var label: SKLabelNode?
-    private var spinnyNode: SKShapeNode?
 
-    override func sceneDidLoad() {
+    override func didMove(to view: SKView) {
 
         self.lastUpdateTime = 0
 
@@ -28,26 +38,23 @@ class GameScene: SKScene {
             label.alpha = 0.0
             label.run(SKAction.fadeIn(withDuration: 2.0))
         }
-        
-        if let tilemap = SKTilemap.load(tmxFile: "Map") {
-            scene?.addChild(tilemap)
-        }
 
-
-        // Create shape node to use during mouse interaction
-        let position = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: position,
-                                                               height: position),
-                                                                cornerRadius: position	 * 0.3)
-
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+        self.chimpSprite.name = "Chimp"
+        self.chimpSprite.position = CGPoint(x: -250, y: 350)
+        self.chimpSprite.physicsBody = SKPhysicsBody(texture: self.chimpSprite.texture!, size: self.chimpSprite.size)
+        self.chimpSprite.physicsBody?.categoryBitMask = 0x00000010
+        self.chimpSprite.physicsBody?.affectedByGravity = false
+        self.chimpSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.chimpSprite.physicsBody?.collisionBitMask = 0x11111111
+        self.playerSprite.name = "Plumber"
+        self.playerSprite.position = CGPoint(x: -250, y: -550)
+        self.playerSprite.physicsBody = SKPhysicsBody(texture: self.playerSprite.texture!, size: self.playerSprite.size)
+        self.playerSprite.physicsBody?.categoryBitMask = 0x00000010
+        self.playerSprite.physicsBody?.affectedByGravity = false
+        self.playerSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.playerSprite.physicsBody?.collisionBitMask = 0x11111111
+        self.addChild(self.chimpSprite)
+        self.addChild(self.playerSprite)
     }
 
     func touchDown(atPoint pos: CGPoint) {
