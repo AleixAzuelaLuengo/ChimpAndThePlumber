@@ -9,21 +9,33 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-
-    var entities = [GKEntity]()
-    var graphs = [String: GKGraph]()
-    lazy var chimpSheet : SpriteSheet = {
-        return SpriteSheet(texture: SKTexture(imageNamed: "DK"), rows: 1, columns: 11, spacing: 1, margin: 1)
-    }()
-    lazy var chimpSprite : SKSpriteNode = { [weak self] in
-        return SKSpriteNode(texture: self?.chimpSheet.textureForColumn(column: 0, row: 0))
-    }()
-    lazy var playerSheet : SpriteSheet = {
-        return SpriteSheet(texture: SKTexture(imageNamed: "DK"), rows: 1, columns: 11, spacing: 1, margin: 1)
-    }()
-    lazy var playerSprite : SKSpriteNode = { [weak self] in
-        return SKSpriteNode(texture: self?.playerSheet.textureForColumn(column: 0, row: 0))
-    }()
+    // GameLoop Vars
+    private var playerLives : Int = 3
+    private var playerForce : Int = 0
+    private var playerMoving : Bool = false
+    private var movementTouch: UITouch?
+    private var chimpSprite : SKSpriteNode!
+    private var playerSprite : SKSpriteNode!
+    private var peachSprite : SKSpriteNode!
+    private var barrelTimer: Timer?
+    
+    private let walkAnimation = [
+        SKTexture(imageNamed: "MarioRun_1"),
+        SKTexture(imageNamed: "MarioRun_2"),
+        SKTexture(imageNamed: "MarioRun_3")
+    ]
+    private var walkAction : SKAction!
+    let walkActionKey = "Walk"
+    
+    private let peachAnimation = [
+        SKTexture(imageNamed: "Peach_1"),
+        SKTexture(imageNamed: "Peach_2"),
+        SKTexture(imageNamed: "Peach_3")
+    ]
+    private let chimpAnimation = [
+        SKTexture(imageNamed: "DK_1"),
+        SKTexture(imageNamed: "DK_2")
+    ]
     
     private var lastUpdateTime: TimeInterval = 0
     private var label: SKLabelNode?
@@ -38,53 +50,110 @@ class GameScene: SKScene {
             label.alpha = 0.0
             label.run(SKAction.fadeIn(withDuration: 2.0))
         }
-
+        // Sprite Initialization
+        // DK
+        self.chimpSprite = SKSpriteNode(imageNamed: "DK_1")
         self.chimpSprite.name = "Chimp"
-        self.chimpSprite.position = CGPoint(x: -250, y: 350)
+        self.chimpSprite.position = CGPoint(x: -50, y: 450)
         self.chimpSprite.physicsBody = SKPhysicsBody(texture: self.chimpSprite.texture!, size: self.chimpSprite.size)
         self.chimpSprite.physicsBody?.categoryBitMask = 0x00000010
-        self.chimpSprite.physicsBody?.affectedByGravity = false
+        self.chimpSprite.physicsBody?.affectedByGravity = true
         self.chimpSprite.physicsBody?.contactTestBitMask = 0x00000101
         self.chimpSprite.physicsBody?.collisionBitMask = 0x11111111
+        // Mario
+        self.playerSprite = SKSpriteNode(imageNamed: "MarioRun_1")
         self.playerSprite.name = "Plumber"
+        self.playerSprite.scale(to: CGSize(width: 36, height: 52))
         self.playerSprite.position = CGPoint(x: -250, y: -550)
         self.playerSprite.physicsBody = SKPhysicsBody(texture: self.playerSprite.texture!, size: self.playerSprite.size)
+        self.playerSprite.physicsBody?.allowsRotation = false
         self.playerSprite.physicsBody?.categoryBitMask = 0x00000010
-        self.playerSprite.physicsBody?.affectedByGravity = false
+        self.playerSprite.physicsBody?.affectedByGravity = true
         self.playerSprite.physicsBody?.contactTestBitMask = 0x00000101
         self.playerSprite.physicsBody?.collisionBitMask = 0x11111111
+        // Peach
+        self.peachSprite = SKSpriteNode(imageNamed: "Peach_1")
+        self.peachSprite.name = "Peach"
+        self.peachSprite.scale(to: CGSize(width: 103, height: 84))
+        self.peachSprite.position = CGPoint(x: -250, y: 300)
+        self.peachSprite.physicsBody = SKPhysicsBody(texture: self.peachSprite.texture!, size: self.peachSprite.size)
+        self.peachSprite.physicsBody?.categoryBitMask = 0x00000010
+        self.playerSprite.physicsBody?.allowsRotation = false
+        self.peachSprite.physicsBody?.affectedByGravity = true
+        self.peachSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.peachSprite.physicsBody?.collisionBitMask = 0x11111111
+        
         self.addChild(self.chimpSprite)
         self.addChild(self.playerSprite)
-    }
-
-    func touchDown(atPoint pos: CGPoint) {
+        self.addChild(self.peachSprite)
         
-    }
-
-    func touchMoved(toPoint pos: CGPoint) {
-    }
-
-    func touchUp(atPoint pos: CGPoint) {
+        // Actions
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: self.walkAnimation, timePerFrame: 0.15))
+        let chimpAnimation = SKAction.repeatForever(SKAction.animate(with: self.chimpAnimation, timePerFrame: 0.25))
+        self.chimpSprite.run(chimpAnimation)
+        let peachAnimation = SKAction.repeatForever(SKAction.animate(with: self.peachAnimation, timePerFrame: 0.25))
+        self.peachSprite.run(peachAnimation)
+        
+        self.barrelTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self,
+                                              selector: #selector(dropBarrel), userInfo: nil, repeats: true)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        guard self.movementTouch == nil else {
+            self.playerSprite.position.y += CGFloat(5 * Double(self.playerForce))
+            self.playerSprite.removeAction(forKey: self.walkActionKey)
+            return
         }
-
-        for touch in touches { self.touchDown(atPoint: touch.location(in: self)) }
+        
+        // Movement Detection
+        if let touch = touches.first {
+            self.movementTouch = touch
+            self.playerMoving = true
+            self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
+            if(touch.location(in: self).x > UIScreen.main.bounds.width/2) {
+                self.playerForce = 1
+                self.playerSprite.xScale = -1
+            }
+            if(touch.location(in: self).x < UIScreen.main.bounds.width/2) {
+                self.playerForce = -1
+                self.playerSprite.xScale = 1
+            }
+        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { self.touchMoved(toPoint: touch.location(in: self)) }
+        for touch in touches {
+            if touch == self.movementTouch {
+                if(touch.location(in: self).x > UIScreen.main.bounds.width/2) {
+                    self.playerForce = 1
+                    self.playerSprite.xScale = -1
+                }
+                if(touch.location(in: self).x < UIScreen.main.bounds.width/2) {
+                    self.playerForce = -1
+                    self.playerSprite.xScale = 1
+                }
+            }
+        }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { self.touchUp(atPoint: touch.location(in: self)) }
+        for touch in touches {
+            if touch == self.movementTouch {
+                self.movementTouch = nil
+                self.playerMoving = false
+                self.playerSprite.removeAction(forKey: self.walkActionKey)
+            }
+        }
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches { self.touchUp(atPoint: touch.location(in: self)) }
+        for touch in touches {
+            if touch == self.movementTouch {
+                self.movementTouch = nil
+                self.playerMoving = false
+                self.playerSprite.removeAction(forKey: self.walkActionKey)
+            }
+        }
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -98,11 +167,28 @@ class GameScene: SKScene {
         // Calculate time since last update
         let dTime = currentTime - self.lastUpdateTime
 
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dTime)
-        }
 
         self.lastUpdateTime = currentTime
+        
+        if(playerMoving) {
+            self.playerSprite.position.x += CGFloat(5 * Double(self.playerForce))
+        }
+    }
+}
+
+extension GameScene {
+
+    private func cleanBarrels() {
+        for node in children {
+            guard node.name == "Barrel" else { continue }
+            if node.position.y > 700 || node.position.y < -700 {
+                node.removeFromParent()
+            }
+        }
+    }
+
+    @objc
+    private func dropBarrel() {
+        
     }
 }
