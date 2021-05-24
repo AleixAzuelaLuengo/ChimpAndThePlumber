@@ -4,12 +4,6 @@
 //
 //  Created by Alumne on 24/5/21.
 //
-//
-//  GameScene+Creations.swift
-//  SpaceInvaders
-//
-//  Created by Guillermo Fernandez on 29/03/2021.
-//
 
 import SpriteKit
 import GameplayKit
@@ -20,15 +14,16 @@ extension GameScene {
         let sprite = SKSpriteNode(imageNamed: "Barrel")
         sprite.position = position
         sprite.name = "Barrel"
+        sprite.scale(to: CGSize(width: 32, height: 28))
         sprite.zPosition = 1
         addChild(sprite)
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
         sprite.physicsBody?.affectedByGravity = true
         sprite.physicsBody?.linearDamping = 0
-        sprite.physicsBody?.contactTestBitMask = 0x11111111
+        sprite.physicsBody?.contactTestBitMask = 0x00000001
         sprite.physicsBody?.collisionBitMask = 0x11111111
-        sprite.physicsBody?.friction = 0;
-        sprite.physicsBody?.angularVelocity = 3;
+        sprite.physicsBody?.friction = 0
+        sprite.physicsBody?.angularVelocity = 3
     }
 
     func resetGame() {

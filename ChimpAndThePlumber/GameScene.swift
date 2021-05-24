@@ -17,6 +17,7 @@ class GameScene: SKScene {
     private var chimpSprite : SKSpriteNode!
     private var playerSprite : SKSpriteNode!
     private var peachSprite : SKSpriteNode!
+    private var limitSprite : SKSpriteNode!
     private var barrelTimer: Timer?
     
     private let walkAnimation = [
@@ -35,6 +36,12 @@ class GameScene: SKScene {
     private let chimpAnimation = [
         SKTexture(imageNamed: "DK_1"),
         SKTexture(imageNamed: "DK_2")
+    ]
+    private let limitAnimation = [
+        SKTexture(imageNamed: "Limit_1"),
+        SKTexture(imageNamed: "Limit_2"),
+        SKTexture(imageNamed: "Limit_3"),
+        SKTexture(imageNamed: "Limit_4")
     ]
     
     private var lastUpdateTime: TimeInterval = 0
@@ -56,9 +63,9 @@ class GameScene: SKScene {
         self.chimpSprite.name = "Chimp"
         self.chimpSprite.position = CGPoint(x: -50, y: 450)
         self.chimpSprite.physicsBody = SKPhysicsBody(texture: self.chimpSprite.texture!, size: self.chimpSprite.size)
-        self.chimpSprite.physicsBody?.categoryBitMask = 0x00000010
+        self.chimpSprite.physicsBody?.categoryBitMask = 0x00000000
         self.chimpSprite.physicsBody?.affectedByGravity = true
-        self.chimpSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.chimpSprite.physicsBody?.contactTestBitMask = 0x00000000
         self.chimpSprite.physicsBody?.collisionBitMask = 0x11111111
         // Mario
         self.playerSprite = SKSpriteNode(imageNamed: "MarioRun_1")
@@ -67,9 +74,8 @@ class GameScene: SKScene {
         self.playerSprite.position = CGPoint(x: -250, y: -550)
         self.playerSprite.physicsBody = SKPhysicsBody(texture: self.playerSprite.texture!, size: self.playerSprite.size)
         self.playerSprite.physicsBody?.allowsRotation = false
-        self.playerSprite.physicsBody?.categoryBitMask = 0x00000010
         self.playerSprite.physicsBody?.affectedByGravity = true
-        self.playerSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.playerSprite.physicsBody?.contactTestBitMask = 0x00000001
         self.playerSprite.physicsBody?.collisionBitMask = 0x11111111
         // Peach
         self.peachSprite = SKSpriteNode(imageNamed: "Peach_1")
@@ -77,15 +83,26 @@ class GameScene: SKScene {
         self.peachSprite.scale(to: CGSize(width: 103, height: 84))
         self.peachSprite.position = CGPoint(x: -250, y: 300)
         self.peachSprite.physicsBody = SKPhysicsBody(texture: self.peachSprite.texture!, size: self.peachSprite.size)
-        self.peachSprite.physicsBody?.categoryBitMask = 0x00000010
-        self.playerSprite.physicsBody?.allowsRotation = false
+        self.peachSprite.physicsBody?.allowsRotation = false
         self.peachSprite.physicsBody?.affectedByGravity = true
-        self.peachSprite.physicsBody?.contactTestBitMask = 0x00000101
+        self.peachSprite.physicsBody?.contactTestBitMask = 0x00000001
         self.peachSprite.physicsBody?.collisionBitMask = 0x11111111
+        // Limit
+        self.limitSprite = SKSpriteNode(imageNamed: "Limit_1")
+        self.limitSprite.name = "Limit"
+        self.limitSprite.scale(to: CGSize(width: 56, height: 88))
+        self.limitSprite.position = CGPoint(x: -350, y: -600)
+        self.limitSprite.physicsBody = SKPhysicsBody(texture: self.limitSprite.texture!, size: self.limitSprite.size)
+        self.limitSprite.physicsBody?.categoryBitMask = 0x00000010
+        self.limitSprite.physicsBody?.allowsRotation = false
+        self.limitSprite.physicsBody?.affectedByGravity = true
+        self.limitSprite.physicsBody?.contactTestBitMask = 0x11111111
+        self.limitSprite.physicsBody?.collisionBitMask = 0x11111111
         
         self.addChild(self.chimpSprite)
         self.addChild(self.playerSprite)
         self.addChild(self.peachSprite)
+        self.addChild(self.limitSprite)
         
         // Actions
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: self.walkAnimation, timePerFrame: 0.15))
@@ -93,8 +110,10 @@ class GameScene: SKScene {
         self.chimpSprite.run(chimpAnimation)
         let peachAnimation = SKAction.repeatForever(SKAction.animate(with: self.peachAnimation, timePerFrame: 0.25))
         self.peachSprite.run(peachAnimation)
+        let limitAnimation = SKAction.repeatForever(SKAction.animate(with: self.limitAnimation, timePerFrame: 0.15))
+        self.limitSprite.run(limitAnimation)
         
-        self.barrelTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self,
+        self.barrelTimer = Timer.scheduledTimer(timeInterval: 2, target: self,
                                               selector: #selector(dropBarrel), userInfo: nil, repeats: true)
     }
 
@@ -189,6 +208,6 @@ extension GameScene {
 
     @objc
     private func dropBarrel() {
-        
+        self.createBarrel(at: CGPoint(x: -150, y: 300))
     }
 }

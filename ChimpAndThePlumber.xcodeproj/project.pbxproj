@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EF107820265430120094850A /* SpriteSheetClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF10781F265430120094850A /* SpriteSheetClass.swift */; };
 		EFA0A016265BD10B00E3107D /* GameSceneCreations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */; };
+		EFA0A01A265BF2DD00E3107D /* GameScenePhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */; };
 		EFA1A03A263B1A4C00E6F692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */; };
 		EFA1A03C263B1A4C00E6F692 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A03B263B1A4C00E6F692 /* GameScene.sks */; };
 		EFA1A03E263B1A4C00E6F692 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A03D263B1A4C00E6F692 /* Actions.sks */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		EF10781F265430120094850A /* SpriteSheetClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheetClass.swift; sourceTree = "<group>"; };
 		EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneCreations.swift; sourceTree = "<group>"; };
+		EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePhysics.swift; sourceTree = "<group>"; };
 		EFA1A036263B1A4C00E6F692 /* ChimpAndThePlumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChimpAndThePlumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA1A03B263B1A4C00E6F692 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				EFA1A03D263B1A4C00E6F692 /* Actions.sks */,
 				EFA1A03F263B1A4C00E6F692 /* GameScene.swift */,
 				EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */,
+				EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */,
 				EFA1A041263B1A4C00E6F692 /* GameViewController.swift */,
 				EFA1A043263B1A4C00E6F692 /* Main.storyboard */,
 				EFA1A046263B1A4D00E6F692 /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 			files = (
 				EFA0A016265BD10B00E3107D /* GameSceneCreations.swift in Sources */,
 				EFA1A040263B1A4C00E6F692 /* GameScene.swift in Sources */,
+				EFA0A01A265BF2DD00E3107D /* GameScenePhysics.swift in Sources */,
 				EFA1A042263B1A4C00E6F692 /* GameViewController.swift in Sources */,
 				EFA1A03A263B1A4C00E6F692 /* AppDelegate.swift in Sources */,
 				EF107820265430120094850A /* SpriteSheetClass.swift in Sources */,
