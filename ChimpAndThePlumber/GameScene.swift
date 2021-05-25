@@ -10,24 +10,35 @@ import GameplayKit
 
 class GameScene: SKScene {
     // GameLoop Vars
+    /// Player Variables
     private var playerLives : Int = 3
     private var playerForce : Int = 0
-    private var playerMoving : Bool = false
-    private var movementTouch: UITouch?
+    private var playerJumping : Bool = false
+    private var playerMovingRight : Bool = false
+    private var playerMovingLeft : Bool = false
+    /// Game Sprites
     private var chimpSprite : SKSpriteNode!
     private var playerSprite : SKSpriteNode!
     private var peachSprite : SKSpriteNode!
     private var limitSprite : SKSpriteNode!
+    /// Actions , Keys & Timers
     private var barrelTimer: Timer?
+    private var walkAction : SKAction!
+    private var walkActionLeft : SKAction!
+    private var walkActionRight : SKAction!
+    private var jumpAction : SKAction!
+    private let walkActionKey = "Walk"
+    private let walkActionLeftKey = "WalkLeft"
+    private let walkActionRightKey = "WalkLeft"
+    private let jumpActionKey = "Jump"
     
+    // Animation Sprites
+    /// Mario Walk Animation
     private let walkAnimation = [
         SKTexture(imageNamed: "MarioRun_1"),
         SKTexture(imageNamed: "MarioRun_2"),
         SKTexture(imageNamed: "MarioRun_3")
     ]
-    private var walkAction : SKAction!
-    let walkActionKey = "Walk"
-    
     private let peachAnimation = [
         SKTexture(imageNamed: "Peach_1"),
         SKTexture(imageNamed: "Peach_2"),
@@ -44,159 +55,96 @@ class GameScene: SKScene {
         SKTexture(imageNamed: "Limit_4")
     ]
     
+    // Logic Variables
+    private var movementTouch: UITouch?
+    private var lookingLeft = true
     private var lastUpdateTime: TimeInterval = 0
     private var label: SKLabelNode?
-
-    override func didMove(to view: SKView) {
-
-        self.lastUpdateTime = 0
-
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        // Sprite Initialization
-        // DK
-        self.chimpSprite = SKSpriteNode(imageNamed: "DK_1")
-        self.chimpSprite.name = "Chimp"
-        self.chimpSprite.position = CGPoint(x: -50, y: 450)
-        self.chimpSprite.physicsBody = SKPhysicsBody(texture: self.chimpSprite.texture!, size: self.chimpSprite.size)
-        self.chimpSprite.physicsBody?.categoryBitMask = 0x00000000
-        self.chimpSprite.physicsBody?.affectedByGravity = true
-        self.chimpSprite.physicsBody?.contactTestBitMask = 0x00000000
-        self.chimpSprite.physicsBody?.collisionBitMask = 0x11111111
-        // Mario
-        self.playerSprite = SKSpriteNode(imageNamed: "MarioRun_1")
-        self.playerSprite.name = "Plumber"
-        self.playerSprite.scale(to: CGSize(width: 36, height: 52))
-        self.playerSprite.position = CGPoint(x: -250, y: -550)
-        self.playerSprite.physicsBody = SKPhysicsBody(texture: self.playerSprite.texture!, size: self.playerSprite.size)
-        self.playerSprite.physicsBody?.allowsRotation = false
-        self.playerSprite.physicsBody?.affectedByGravity = true
-        self.playerSprite.physicsBody?.contactTestBitMask = 0x00000001
-        self.playerSprite.physicsBody?.collisionBitMask = 0x11111111
-        // Peach
-        self.peachSprite = SKSpriteNode(imageNamed: "Peach_1")
-        self.peachSprite.name = "Peach"
-        self.peachSprite.scale(to: CGSize(width: 103, height: 84))
-        self.peachSprite.position = CGPoint(x: -250, y: 300)
-        self.peachSprite.physicsBody = SKPhysicsBody(texture: self.peachSprite.texture!, size: self.peachSprite.size)
-        self.peachSprite.physicsBody?.allowsRotation = false
-        self.peachSprite.physicsBody?.affectedByGravity = true
-        self.peachSprite.physicsBody?.contactTestBitMask = 0x00000001
-        self.peachSprite.physicsBody?.collisionBitMask = 0x11111111
-        // Limit
-        self.limitSprite = SKSpriteNode(imageNamed: "Limit_1")
-        self.limitSprite.name = "Limit"
-        self.limitSprite.scale(to: CGSize(width: 56, height: 88))
-        self.limitSprite.position = CGPoint(x: -350, y: -600)
-        self.limitSprite.physicsBody = SKPhysicsBody(texture: self.limitSprite.texture!, size: self.limitSprite.size)
-        self.limitSprite.physicsBody?.categoryBitMask = 0x00000010
-        self.limitSprite.physicsBody?.allowsRotation = false
-        self.limitSprite.physicsBody?.affectedByGravity = true
-        self.limitSprite.physicsBody?.contactTestBitMask = 0x11111111
-        self.limitSprite.physicsBody?.collisionBitMask = 0x11111111
+    private var screenSize : CGSize!
         
+    override func didMove(to view: SKView) {
+        // Logic Variables init
+        self.screenSize = self.frame.size
+        self.physicsWorld.contactDelegate = self
+        self.lastUpdateTime = 0
+        
+        // Sprite init
+        self.peachSprite = self.createPeach(at: CGPoint(x: -250, y: 300))
+        self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
+        self.chimpSprite = self.createDK(at: CGPoint(x: -50, y: 450))
+        self.limitSprite = self.createLimit(at: CGPoint(x: -350, y: -590))
+        
+        // Sprite addChild
         self.addChild(self.chimpSprite)
         self.addChild(self.playerSprite)
         self.addChild(self.peachSprite)
         self.addChild(self.limitSprite)
         
         // Actions
+        self.walkActionLeft = SKAction.repeatForever(SKAction.moveBy(x: -8, y: 0, duration: 0.05))
+        self.walkActionRight = SKAction.repeatForever(SKAction.moveBy(x: 8, y: 0, duration: 0.05))
+        self.jumpAction = SKAction.moveBy(x: 10, y: 200, duration: 0.25)
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: self.walkAnimation, timePerFrame: 0.15))
         let chimpAnimation = SKAction.repeatForever(SKAction.animate(with: self.chimpAnimation, timePerFrame: 0.25))
-        self.chimpSprite.run(chimpAnimation)
         let peachAnimation = SKAction.repeatForever(SKAction.animate(with: self.peachAnimation, timePerFrame: 0.25))
-        self.peachSprite.run(peachAnimation)
         let limitAnimation = SKAction.repeatForever(SKAction.animate(with: self.limitAnimation, timePerFrame: 0.15))
-        self.limitSprite.run(limitAnimation)
-        
-        self.barrelTimer = Timer.scheduledTimer(timeInterval: 2, target: self,
+        self.barrelTimer = Timer.scheduledTimer(timeInterval: 3.5, target: self,
                                               selector: #selector(dropBarrel), userInfo: nil, repeats: true)
+        // Run Action
+        self.peachSprite.run(peachAnimation)
+        self.limitSprite.run(limitAnimation)
+        self.chimpSprite.run(chimpAnimation)
+        self.dropBarrel()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard self.movementTouch == nil else {
-            self.playerSprite.position.y += CGFloat(5 * Double(self.playerForce))
-            self.playerSprite.removeAction(forKey: self.walkActionKey)
+            self.playerSprite.run(jumpAction, withKey: jumpActionKey)
             return
         }
         
         // Movement Detection
         if let touch = touches.first {
             self.movementTouch = touch
-            self.playerMoving = true
             self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
-            if(touch.location(in: self).x > UIScreen.main.bounds.width/2) {
-                self.playerForce = 1
-                self.playerSprite.xScale = -1
+            if(touch.location(in: self).x >= 0 && !playerMovingRight) {
+                moveRight()
             }
-            if(touch.location(in: self).x < UIScreen.main.bounds.width/2) {
-                self.playerForce = -1
-                self.playerSprite.xScale = 1
+            if(touch.location(in: self).x < 0 && !playerMovingLeft) {
+                moveLeft()
             }
         }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch == self.movementTouch {
-                if(touch.location(in: self).x > UIScreen.main.bounds.width/2) {
-                    self.playerForce = 1
-                    self.playerSprite.xScale = -1
-                }
-                if(touch.location(in: self).x < UIScreen.main.bounds.width/2) {
-                    self.playerForce = -1
-                    self.playerSprite.xScale = 1
-                }
+        for touch in touches where touch == self.movementTouch {
+            if(touch.location(in: self).x >= 0 && !playerMovingRight) {
+                moveRight()
+            }
+            if(touch.location(in: self).x < 0 && !playerMovingLeft) {
+                moveLeft()
             }
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch == self.movementTouch {
-                self.movementTouch = nil
-                self.playerMoving = false
-                self.playerSprite.removeAction(forKey: self.walkActionKey)
-            }
+        for touch in touches where touch == self.movementTouch {
+                cancelOutMovement()
         }
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            if touch == self.movementTouch {
-                self.movementTouch = nil
-                self.playerMoving = false
-                self.playerSprite.removeAction(forKey: self.walkActionKey)
-            }
+        for touch in touches where touch == self.movementTouch {
+                cancelOutMovement()
         }
     }
 
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-
-        // Initialize _lastUpdateTime if it has not already been
-        if self.lastUpdateTime == 0 {
-            self.lastUpdateTime = currentTime
-        }
-
-        // Calculate time since last update
-        let dTime = currentTime - self.lastUpdateTime
-
-
-        self.lastUpdateTime = currentTime
         
-        if(playerMoving) {
-            self.playerSprite.position.x += CGFloat(5 * Double(self.playerForce))
-        }
     }
 }
 
 extension GameScene {
-
     private func cleanBarrels() {
         for node in children {
             guard node.name == "Barrel" else { continue }
@@ -205,7 +153,38 @@ extension GameScene {
             }
         }
     }
-
+    
+    private func moveRight() {
+        if(lookingLeft) {
+            self.playerSprite.xScale *= -1
+        }
+        self.playerMovingRight = true
+        self.playerMovingLeft = false
+        self.playerSprite.removeAction(forKey: walkActionLeftKey)
+        self.playerSprite.run(walkActionRight, withKey: walkActionRightKey)
+        self.lookingLeft = false
+    }
+    
+    private func moveLeft() {
+        if(!lookingLeft) {
+            self.playerSprite.xScale *= -1
+        }
+        self.playerMovingLeft = true
+        self.playerMovingRight = false
+        self.playerSprite.removeAction(forKey: walkActionRightKey)
+        self.playerSprite.run(walkActionLeft, withKey: walkActionLeftKey)
+        self.lookingLeft = true
+    }
+    
+    private func cancelOutMovement() {
+        self.movementTouch = nil
+        self.playerMovingLeft = false
+        self.playerMovingRight = false
+        self.playerSprite.removeAction(forKey: self.walkActionKey)
+        self.playerSprite.removeAction(forKey: walkActionRightKey)
+        self.playerSprite.removeAction(forKey: walkActionLeftKey)
+    }
+    
     @objc
     private func dropBarrel() {
         self.createBarrel(at: CGPoint(x: -150, y: 300))

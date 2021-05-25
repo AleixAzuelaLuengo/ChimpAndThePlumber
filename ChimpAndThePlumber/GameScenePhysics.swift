@@ -36,10 +36,9 @@ extension GameScene: SKPhysicsContactDelegate {
             if(nameB == "Barrel") {
                 nodeB.removeFromParent()
             }
-            //minus 1 life
+            // minus 1 life
             return
         }
 
     }
 }
-
