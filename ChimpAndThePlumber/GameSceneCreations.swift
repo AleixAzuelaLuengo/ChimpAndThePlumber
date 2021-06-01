@@ -69,7 +69,7 @@ extension GameScene {
         let sprite = SKSpriteNode(imageNamed: "Barrel")
         sprite.position = position
         sprite.name = "Barrel"
-        sprite.scale(to: CGSize(width: 32, height: 28))
+        sprite.scale(to: CGSize(width: 26, height: 26))
         sprite.zPosition = 1
         addChild(sprite)
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)

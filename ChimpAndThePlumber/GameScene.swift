@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     // GameLoop Vars
+    ///GameVars
+    public var punctuation : Int = 0
     /// Player Variables
     private var playerLives : Int = 3
     private var playerForce : Int = 0
@@ -101,7 +103,6 @@ class GameScene: SKScene {
         guard self.movementTouch == nil else {
             guard self.playerJumping == true else {
             jump()
-            print("jump")
             return
             }
             return

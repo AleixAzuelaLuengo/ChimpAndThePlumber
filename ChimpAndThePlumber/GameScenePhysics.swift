@@ -26,6 +26,7 @@ extension GameScene: SKPhysicsContactDelegate {
             if(nameB == "Barrel") {
                 nodeB.removeFromParent()
             }
+            punctuation += 100
             return
         }
         
@@ -44,7 +45,7 @@ extension GameScene: SKPhysicsContactDelegate {
             if(nameB == "Barrel") {
                 nodeB.removeFromParent()
             }
-            // minus 1 life
+            punctuation -= 50
             return
         }
 
