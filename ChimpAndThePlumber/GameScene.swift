@@ -13,7 +13,7 @@ class GameScene: SKScene {
     /// Player Variables
     private var playerLives : Int = 3
     private var playerForce : Int = 0
-    private var playerJumping : Bool = false
+    public var playerJumping : Bool = false
     private var playerMovingRight : Bool = false
     private var playerMovingLeft : Bool = false
     /// Game Sprites
@@ -99,7 +99,11 @@ class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard self.movementTouch == nil else {
-            self.playerSprite.run(jumpAction, withKey: jumpActionKey)
+            guard self.playerJumping == true else {
+            jump()
+            print("jump")
+            return
+            }
             return
         }
         
@@ -152,6 +156,15 @@ extension GameScene {
                 node.removeFromParent()
             }
         }
+    }
+    
+    private func jump() {
+        self.playerSprite.run(jumpAction, withKey: jumpActionKey)
+        self.playerJumping = true
+    }
+    
+    public func resetJump() {
+        self.playerJumping = false
     }
     
     private func moveRight() {

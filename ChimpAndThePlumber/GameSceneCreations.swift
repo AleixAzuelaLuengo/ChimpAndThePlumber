@@ -40,6 +40,7 @@ extension GameScene {
         let sprite = SKSpriteNode(imageNamed: "MarioRun_1")
         sprite.name = "Plumber"
         sprite.scale(to: CGSize(width: 36, height: 52))
+        sprite.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         sprite.position = position
         sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
         sprite.physicsBody?.allowsRotation = false
