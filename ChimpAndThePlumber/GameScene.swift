@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     // GameLoop Vars
     ///GameVars
+    public var scoreLabel: SKLabelNode!
     public var punctuation : Int = 0
     /// Player Variables
     private var playerLives : Int = 3
@@ -71,12 +72,15 @@ class GameScene: SKScene {
         self.lastUpdateTime = 0
         
         // Sprite init
+        self.scoreLabel = SKLabelNode(text: "SCORE: 0")
+        self.scoreLabel.position = CGPoint(x: 0, y: (self.size.height / 2) - 50)
         self.peachSprite = self.createPeach(at: CGPoint(x: -250, y: 300))
         self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
         self.chimpSprite = self.createDK(at: CGPoint(x: -50, y: 450))
         self.limitSprite = self.createLimit(at: CGPoint(x: -350, y: -590))
         
         // Sprite addChild
+        self.addChild(self.scoreLabel)
         self.addChild(self.chimpSprite)
         self.addChild(self.playerSprite)
         self.addChild(self.peachSprite)

@@ -27,6 +27,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 nodeB.removeFromParent()
             }
             punctuation += 100
+            scoreLabel.text = "SCORE: \(punctuation)"
             return
         }
         
@@ -46,6 +47,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 nodeB.removeFromParent()
             }
             punctuation -= 50
+            scoreLabel.text = "SCORE: \(punctuation)"
             return
         }
 
