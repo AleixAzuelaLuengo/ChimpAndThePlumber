@@ -33,7 +33,8 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if(oneNodeIsFloor && oneNodeIsPlayer) {
             let plumberNode : SKSpriteNode = nameA == "Plumber" ? nodeA : nodeB
-            if let contactPointInView = scene?.convert(contact.contactPoint, to: plumberNode), contactPointInView.y < 0 {
+            if let contactPointInView = scene?.convert(contact.contactPoint,
+                                                       to: plumberNode), contactPointInView.y < 0 {
                 resetJump()
             }
             return
@@ -46,9 +47,13 @@ extension GameScene: SKPhysicsContactDelegate {
             if(nameB == "Barrel") {
                 nodeB.removeFromParent()
             }
-            punctuation -= 50
-            scoreLabel.text = "SCORE: \(punctuation)"
-            return
+            if(punctuation > 0) {
+                punctuation -= 50
+                scoreLabel.text = "SCORE: \(punctuation)"
+                return
+            } else {
+                resetGame()
+            }
         }
 
     }

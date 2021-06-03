@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     // GameLoop Vars
-    ///GameVars
+    /// GameVars
     public var scoreLabel: SKLabelNode!
     public var punctuation : Int = 0
     /// Player Variables
@@ -20,10 +20,10 @@ class GameScene: SKScene {
     private var playerMovingRight : Bool = false
     private var playerMovingLeft : Bool = false
     /// Game Sprites
-    private var chimpSprite : SKSpriteNode!
-    private var playerSprite : SKSpriteNode!
-    private var peachSprite : SKSpriteNode!
-    private var limitSprite : SKSpriteNode!
+    public var chimpSprite : SKSpriteNode!
+    public var playerSprite : SKSpriteNode!
+    public var peachSprite : SKSpriteNode!
+    public var limitSprite : SKSpriteNode!
     /// Actions , Keys & Timers
     private var barrelTimer: Timer?
     private var walkAction : SKAction!
@@ -106,8 +106,8 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard self.movementTouch == nil else {
             guard self.playerJumping == true else {
-            jump()
-            return
+                jump()
+                return
             }
             return
         }
@@ -154,12 +154,10 @@ class GameScene: SKScene {
 }
 
 extension GameScene {
-    private func cleanBarrels() {
+    public func cleanBarrels() {
         for node in children {
             guard node.name == "Barrel" else { continue }
-            if node.position.y > 700 || node.position.y < -700 {
                 node.removeFromParent()
-            }
         }
     }
     
@@ -168,6 +166,7 @@ extension GameScene {
         self.playerJumping = true
     }
     
+    // Public function being called from the physics controller where we reset the jump
     public func resetJump() {
         self.playerJumping = false
     }

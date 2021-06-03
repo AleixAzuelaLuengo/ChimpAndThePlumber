@@ -82,12 +82,13 @@ extension GameScene {
     }
 
     func resetGame() {
-        let deleteObjects = self.children.filter { (node) -> Bool in
-            return !(node.name == "Player")
-        }
+        // remove player and barrels
+        cleanBarrels()
+        self.playerSprite.removeFromParent()
+        
+        self.scoreLabel.text = "SCORE: 0"
+        self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
 
-        deleteObjects.forEach { (node) in
-            node.removeFromParent()
+        self.addChild(self.playerSprite)
         }
-    }
 }
