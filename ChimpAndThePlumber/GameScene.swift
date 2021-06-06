@@ -7,6 +7,7 @@
 
 import SpriteKit
 import AVFAudio
+import AVFoundation
 import GameplayKit
 
 class GameScene: SKScene {
@@ -39,12 +40,12 @@ class GameScene: SKScene {
     public var hammerAction : SKAction!
     private var jumpAction : SKAction!
     public var jumpSound : SKAction!
-    public var walkSound = AVAudioPlayer()
-    public var hammerSound = AVAudioPlayer()
+    public var walkSound : AVAudioPlayer!
+    public var hammerSound : AVAudioPlayer!
     public var powerUpSound : SKAction!
     public var deathSound : SKAction!
     public var completionSound : SKAction!
-    public var backgroundMusic = AVAudioPlayer()
+    public var backgroundMusic : AVAudioPlayer!
     public  let walkActionKey = "Walk"
     public  let hammerActionKey = "Hammer"
     private let walkActionLeftKey = "WalkLeft"
@@ -92,7 +93,7 @@ class GameScene: SKScene {
         self.physicsWorld.contactDelegate = self
         self.lastUpdateTime = 0
         
-        //SoundInit
+        // SoundInit
         self.initSounds()
         
         // Sprite init

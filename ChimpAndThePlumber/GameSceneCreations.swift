@@ -7,6 +7,7 @@
 
 import SpriteKit
 import AVFAudio
+import AVFoundation
 import GameplayKit
 
 extension GameScene {
