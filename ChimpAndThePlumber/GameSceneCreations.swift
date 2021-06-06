@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import AVFAudio
 import GameplayKit
 
 extension GameScene {
@@ -21,6 +22,35 @@ extension GameScene {
         sprite.physicsBody?.isDynamic = false
         sprite.physicsBody?.collisionBitMask = 0x11111111
         return sprite
+    }
+    
+    func initSounds() {
+        self.jumpSound = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
+        self.deathSound = SKAction.playSoundFileNamed("death.wav", waitForCompletion: false)
+        self.powerUpSound = SKAction.playSoundFileNamed("itemget.wav", waitForCompletion: false)
+        self.completionSound = SKAction.playSoundFileNamed("win2.wav", waitForCompletion: false)
+        var url = Bundle.main.url(forResource: "bacmusic", withExtension: "wav")
+        do {
+            self.backgroundMusic = try AVAudioPlayer(contentsOf: url!)
+        } catch {
+            print("Unable to load sound")
+        }
+        url = Bundle.main.url(forResource: "walking", withExtension: "wav")
+        do {
+            self.walkSound = try AVAudioPlayer(contentsOf: url!)
+        } catch {
+            print("Unable to load sound")
+        }
+        url = Bundle.main.url(forResource: "hammer", withExtension: "wav")
+        do {
+            self.hammerSound = try AVAudioPlayer(contentsOf: url!)
+        } catch {
+            print("Unable to load sound")
+        }
+        self.hammerSound.numberOfLoops = -1
+        self.walkSound.numberOfLoops = -1
+        self.backgroundMusic.numberOfLoops = -1
+        self.backgroundMusic.play()
     }
     
     func createDK(at position: CGPoint) -> SKSpriteNode {

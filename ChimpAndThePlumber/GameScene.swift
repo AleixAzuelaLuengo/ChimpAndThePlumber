@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import AVFAudio
 import GameplayKit
 
 class GameScene: SKScene {
@@ -37,6 +38,13 @@ class GameScene: SKScene {
     private var walkActionRight : SKAction!
     public var hammerAction : SKAction!
     private var jumpAction : SKAction!
+    public var jumpSound : SKAction!
+    public var walkSound = AVAudioPlayer()
+    public var hammerSound = AVAudioPlayer()
+    public var powerUpSound : SKAction!
+    public var deathSound : SKAction!
+    public var completionSound : SKAction!
+    public var backgroundMusic = AVAudioPlayer()
     public  let walkActionKey = "Walk"
     public  let hammerActionKey = "Hammer"
     private let walkActionLeftKey = "WalkLeft"
@@ -83,6 +91,9 @@ class GameScene: SKScene {
         self.screenSize = self.frame.size
         self.physicsWorld.contactDelegate = self
         self.lastUpdateTime = 0
+        
+        //SoundInit
+        self.initSounds()
         
         // Sprite init
         self.scoreLabel = SKLabelNode(text: "SCORE: 0")
@@ -133,6 +144,7 @@ class GameScene: SKScene {
         
         // Movement Detection
         if let touch = touches.first {
+            self.walkSound.play()
             self.movementTouch = touch
             if(!playerInmortal) {
                 self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
@@ -218,6 +230,7 @@ extension GameScene {
     }
     
     private func jump() {
+        self.playerSprite.run(self.jumpSound)
         self.playerSprite.run(jumpAction, withKey: jumpActionKey)
         self.playerJumping = true
     }
@@ -249,6 +262,7 @@ extension GameScene {
     }
     
     private func cancelOutMovement() {
+        self.walkSound.stop()
         self.movementTouch = nil
         self.playerMovingLeft = false
         self.playerMovingRight = false
@@ -264,6 +278,7 @@ extension GameScene {
     
     @objc
     public func stopHammer() {
+        self.hammerSound.stop()
         self.playerInmortal = false
         self.playerSprite.removeAction(forKey: self.hammerActionKey)
         if(playerMovingLeft || playerMovingRight) {

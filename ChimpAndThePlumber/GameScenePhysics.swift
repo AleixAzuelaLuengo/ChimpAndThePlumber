@@ -23,7 +23,9 @@ extension GameScene: SKPhysicsContactDelegate {
         let oneNodeIsPlayer = nameA == "Plumber" || nameB == "Plumber"
         if oneNodeIsPeach && oneNodeIsPlayer {
             self.punctuation += lifes * 1000
-            // END GAME
+            self.scoreLabel.text = "SCORE: \(punctuation)"
+            self.playerSprite.run(self.completionSound)
+            self.resetGame()
             return
         }
     }
@@ -47,6 +49,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if oneNodeIsBarrel && oneNodeIsPlayer {
             if(!self.playerInmortal) {
                 if(self.lifes > 0 ) {
+                    self.playerSprite.run(self.deathSound)
                     self.lifes -= 1
                     self.lifesLabel.text = "LIVES LEFT: \(self.lifes)"
                     self.resetGame()
@@ -83,10 +86,12 @@ extension GameScene: SKPhysicsContactDelegate {
             }
             return
         }
-        if(oneNodeIsHammer && oneNodeIsPlayer) {
+        if(oneNodeIsHammer && oneNodeIsPlayer && !self.playerInmortal) {
+            self.playerSprite.run(self.powerUpSound)
             self.playerSprite.removeAction(forKey: self.walkActionKey)
             self.playerSprite.run(self.hammerAction, withKey: self.hammerActionKey)
             self.playerInmortal = true
+            self.hammerSound.play()
             Timer.scheduledTimer(timeInterval: 3.5, target: self,
                                                   selector: #selector(stopHammer), userInfo: nil, repeats: false)
         }
@@ -99,6 +104,7 @@ extension GameScene: SKPhysicsContactDelegate {
         if(oneNodeIsDK && oneNodeIsPlayer) {
             if(!self.playerInmortal) {
                 if(self.lifes > 0) {
+                    self.playerSprite.run(self.deathSound)
                     self.lifes -= 1
                     self.lifesLabel.text = "LIVES LEFT: \(self.lifes)"
                     self.resetGame()

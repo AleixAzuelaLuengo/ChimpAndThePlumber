@@ -16,6 +16,13 @@
 		EFA1A042263B1A4C00E6F692 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1A041263B1A4C00E6F692 /* GameViewController.swift */; };
 		EFA1A045263B1A4C00E6F692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A043263B1A4C00E6F692 /* Main.storyboard */; };
 		EFA1A047263B1A4D00E6F692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA1A046263B1A4D00E6F692 /* Assets.xcassets */; };
+		EFE14D71266CE06300C9C11D /* win2.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D70266CE06300C9C11D /* win2.wav */; };
+		EFE14D73266CE06D00C9C11D /* bacmusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D72266CE06D00C9C11D /* bacmusic.wav */; };
+		EFE14D75266CE07900C9C11D /* hammer.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D74266CE07900C9C11D /* hammer.wav */; };
+		EFE14D77266CE07F00C9C11D /* itemget.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D76266CE07E00C9C11D /* itemget.wav */; };
+		EFE14D79266CE08700C9C11D /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D78266CE08700C9C11D /* death.wav */; };
+		EFE14D7B266CE09300C9C11D /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D7A266CE09300C9C11D /* jump.wav */; };
+		EFE14D7D266CE0A200C9C11D /* walking.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D7C266CE0A200C9C11D /* walking.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,13 @@
 		EFA1A044263B1A4C00E6F692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFA1A046263B1A4D00E6F692 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFA1A048263B1A4D00E6F692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFE14D70266CE06300C9C11D /* win2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = win2.wav; path = ../../../../../Downloads/win2.wav; sourceTree = "<group>"; };
+		EFE14D72266CE06D00C9C11D /* bacmusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bacmusic.wav; path = ../../../../../Downloads/bacmusic.wav; sourceTree = "<group>"; };
+		EFE14D74266CE07900C9C11D /* hammer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hammer.wav; path = ../../../../../Downloads/hammer.wav; sourceTree = "<group>"; };
+		EFE14D76266CE07E00C9C11D /* itemget.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = itemget.wav; path = ../../../../../Downloads/itemget.wav; sourceTree = "<group>"; };
+		EFE14D78266CE08700C9C11D /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = death.wav; path = ../../../../../Downloads/death.wav; sourceTree = "<group>"; };
+		EFE14D7A266CE09300C9C11D /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = ../../../../../Downloads/jump.wav; sourceTree = "<group>"; };
+		EFE14D7C266CE0A200C9C11D /* walking.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = walking.wav; path = ../../../../../Downloads/walking.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +76,7 @@
 		EFA1A038263B1A4C00E6F692 /* ChimpAndThePlumber */ = {
 			isa = PBXGroup;
 			children = (
+				EFE14D6F266CDFD400C9C11D /* Sounds */,
 				EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */,
 				EFA1A03B263B1A4C00E6F692 /* GameScene.sks */,
 				EFA1A03D263B1A4C00E6F692 /* Actions.sks */,
@@ -74,6 +89,20 @@
 				EFA1A048263B1A4D00E6F692 /* Info.plist */,
 			);
 			path = ChimpAndThePlumber;
+			sourceTree = "<group>";
+		};
+		EFE14D6F266CDFD400C9C11D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				EFE14D7C266CE0A200C9C11D /* walking.wav */,
+				EFE14D7A266CE09300C9C11D /* jump.wav */,
+				EFE14D78266CE08700C9C11D /* death.wav */,
+				EFE14D76266CE07E00C9C11D /* itemget.wav */,
+				EFE14D74266CE07900C9C11D /* hammer.wav */,
+				EFE14D72266CE06D00C9C11D /* bacmusic.wav */,
+				EFE14D70266CE06300C9C11D /* win2.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +163,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE14D7B266CE09300C9C11D /* jump.wav in Resources */,
+				EFE14D71266CE06300C9C11D /* win2.wav in Resources */,
+				EFE14D73266CE06D00C9C11D /* bacmusic.wav in Resources */,
 				EFA1A045263B1A4C00E6F692 /* Main.storyboard in Resources */,
 				EFA1A03C263B1A4C00E6F692 /* GameScene.sks in Resources */,
+				EFE14D7D266CE0A200C9C11D /* walking.wav in Resources */,
+				EFE14D75266CE07900C9C11D /* hammer.wav in Resources */,
 				EFA1A047263B1A4D00E6F692 /* Assets.xcassets in Resources */,
+				EFE14D77266CE07F00C9C11D /* itemget.wav in Resources */,
+				EFE14D79266CE08700C9C11D /* death.wav in Resources */,
 				EFA1A03E263B1A4C00E6F692 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
