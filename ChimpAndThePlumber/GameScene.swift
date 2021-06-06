@@ -11,10 +11,16 @@ import GameplayKit
 class GameScene: SKScene {
     // GameLoop Vars
     /// GameVars
+    static public let LEADERBOARDKEY = "com.enti.romannumeral.leaderboard"
+    public var leaderBoardName = [String]()
     public var scoreLabel: SKLabelNode!
+    public var lifesLabel: SKLabelNode!
     public var punctuation : Int = 0
+    public var lifes = 5
+    private var nickname : String = ""
     /// Player Variables
     private var playerLives : Int = 3
+    public var playerInmortal : Bool = false
     private var playerForce : Int = 0
     public var playerJumping : Bool = false
     private var playerMovingRight : Bool = false
@@ -26,11 +32,13 @@ class GameScene: SKScene {
     public var limitSprite : SKSpriteNode!
     /// Actions , Keys & Timers
     private var barrelTimer: Timer?
-    private var walkAction : SKAction!
+    public var walkAction : SKAction!
     private var walkActionLeft : SKAction!
     private var walkActionRight : SKAction!
+    public var hammerAction : SKAction!
     private var jumpAction : SKAction!
-    private let walkActionKey = "Walk"
+    public  let walkActionKey = "Walk"
+    public  let hammerActionKey = "Hammer"
     private let walkActionLeftKey = "WalkLeft"
     private let walkActionRightKey = "WalkLeft"
     private let jumpActionKey = "Jump"
@@ -41,6 +49,11 @@ class GameScene: SKScene {
         SKTexture(imageNamed: "MarioRun_1"),
         SKTexture(imageNamed: "MarioRun_2"),
         SKTexture(imageNamed: "MarioRun_3")
+    ]
+    private let hammerAnimation = [
+        SKTexture(imageNamed: "Hammer_1"),
+        SKTexture(imageNamed: "Hammer_2"),
+        SKTexture(imageNamed: "Hammer_3")
     ]
     private let peachAnimation = [
         SKTexture(imageNamed: "Peach_1"),
@@ -73,7 +86,9 @@ class GameScene: SKScene {
         
         // Sprite init
         self.scoreLabel = SKLabelNode(text: "SCORE: 0")
-        self.scoreLabel.position = CGPoint(x: 0, y: (self.size.height / 2) - 50)
+        self.scoreLabel.position = CGPoint(x: 150, y: (self.size.height / 2) - 100)
+        self.lifesLabel = SKLabelNode(text: "LIVES LEFT: 5")
+        self.lifesLabel.position = CGPoint(x: -150, y: (self.size.height / 2) - 100)
         self.peachSprite = self.createPeach(at: CGPoint(x: -250, y: 300))
         self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
         self.chimpSprite = self.createDK(at: CGPoint(x: -50, y: 450))
@@ -81,15 +96,19 @@ class GameScene: SKScene {
         
         // Sprite addChild
         self.addChild(self.scoreLabel)
+        self.addChild(self.lifesLabel)
         self.addChild(self.chimpSprite)
         self.addChild(self.playerSprite)
         self.addChild(self.peachSprite)
         self.addChild(self.limitSprite)
+        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -200)))
+        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -550)))
         
         // Actions
         self.walkActionLeft = SKAction.repeatForever(SKAction.moveBy(x: -8, y: 0, duration: 0.05))
         self.walkActionRight = SKAction.repeatForever(SKAction.moveBy(x: 8, y: 0, duration: 0.05))
         self.jumpAction = SKAction.moveBy(x: 10, y: 200, duration: 0.25)
+        self.hammerAction = SKAction.repeatForever(SKAction.animate(with: self.hammerAnimation, timePerFrame: 0.15))
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: self.walkAnimation, timePerFrame: 0.15))
         let chimpAnimation = SKAction.repeatForever(SKAction.animate(with: self.chimpAnimation, timePerFrame: 0.25))
         let peachAnimation = SKAction.repeatForever(SKAction.animate(with: self.peachAnimation, timePerFrame: 0.25))
@@ -115,7 +134,12 @@ class GameScene: SKScene {
         // Movement Detection
         if let touch = touches.first {
             self.movementTouch = touch
-            self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
+            if(!playerInmortal) {
+                self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
+            } else {
+                self.playerSprite.run(self.hammerAction, withKey: self.walkActionKey)
+            }
+            
             if(touch.location(in: self).x >= 0 && !playerMovingRight) {
                 moveRight()
             }
@@ -149,7 +173,7 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        
+
     }
 }
 
@@ -161,12 +185,43 @@ extension GameScene {
         }
     }
     
+    public func getLeaderBoard() {
+        if let leaderboardObject = UserDefaults.standard.value(forKey: GameScene.LEADERBOARDKEY)  as? Data {
+            do {
+                let calls = try JSONDecoder().decode([String].self, from: leaderboardObject)
+                leaderBoardName.removeAll()
+                leaderBoardName.append(contentsOf: calls)
+                
+            } catch {
+                print("Unable to decode calls")
+            }
+        } else {
+            print("Value not found")
+        }
+        let temp = "\(punctuation) \(nickname)"
+        leaderBoardName.append(temp)
+        leaderBoardName = leaderBoardName.sorted { $0.lowercased() < $1.lowercased() }
+        if(leaderBoardName.count > 5) {
+            leaderBoardName.remove(at: leaderBoardName.count - 1)
+        }
+        writeLeaderboard()
+        print(leaderBoardName)
+    }
+    
+    public func writeLeaderboard() {
+        do {
+            let data = try JSONEncoder().encode(leaderBoardName)
+            UserDefaults.standard.setValue(data, forKey: GameScene.LEADERBOARDKEY)
+        } catch {
+                print(error)
+        }
+    }
+    
     private func jump() {
         self.playerSprite.run(jumpAction, withKey: jumpActionKey)
         self.playerJumping = true
     }
     
-    // Public function being called from the physics controller where we reset the jump
     public func resetJump() {
         self.playerJumping = false
     }
@@ -205,5 +260,30 @@ extension GameScene {
     @objc
     private func dropBarrel() {
         self.createBarrel(at: CGPoint(x: -150, y: 300))
+    }
+    
+    @objc
+    public func stopHammer() {
+        self.playerInmortal = false
+        self.playerSprite.removeAction(forKey: self.hammerActionKey)
+        if(playerMovingLeft || playerMovingRight) {
+            self.playerSprite.run(self.walkAction, withKey: self.walkActionKey)
+        } else {
+            self.playerSprite.texture = SKTexture(imageNamed: "MarioRun_1")
+        }
+    }
+    
+    func resetGame() {
+        // remove player and barrels
+        cleanBarrels()
+        self.playerMovingLeft = false
+        self.lookingLeft = true
+        self.playerMovingRight = false
+        self.playerSprite.removeFromParent()
+        self.punctuation = 0
+        self.scoreLabel.text = "SCORE: 0"
+        self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
+
+        self.addChild(self.playerSprite)
     }
 }

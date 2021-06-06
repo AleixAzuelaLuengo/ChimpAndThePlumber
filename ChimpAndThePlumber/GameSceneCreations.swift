@@ -80,15 +80,18 @@ extension GameScene {
         sprite.physicsBody?.friction = 0
         sprite.physicsBody?.angularVelocity = 3
     }
+    
+    func createHammer(at position: CGPoint) -> SKSpriteNode {
+        let sprite = SKSpriteNode(imageNamed: "HammerPU")
+        sprite.position = position
+        sprite.name = "Hammer"
+        sprite.scale(to: CGSize(width: 27, height: 30))
+        sprite.zPosition = 1
+        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+        sprite.physicsBody?.affectedByGravity = false
+        sprite.physicsBody?.contactTestBitMask = 0x00000001
+        sprite.physicsBody?.collisionBitMask = 0x00000000
+        return sprite
+    }
 
-    func resetGame() {
-        // remove player and barrels
-        cleanBarrels()
-        self.playerSprite.removeFromParent()
-        
-        self.scoreLabel.text = "SCORE: 0"
-        self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
-
-        self.addChild(self.playerSprite)
-        }
 }
