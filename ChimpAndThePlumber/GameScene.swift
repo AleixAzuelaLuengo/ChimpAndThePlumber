@@ -10,11 +10,16 @@ import AVFAudio
 import AVFoundation
 import GameplayKit
 
+struct LeadboardScore : Codable {
+    let score : Int
+    let name : String
+}
+
 class GameScene: SKScene {
     // GameLoop Vars
     /// GameVars
     static public let LEADERBOARDKEY = "com.enti.romannumeral.leaderboard"
-    public var leaderBoardName = [String]()
+    public var leaderBoardName = [LeadboardScore]()
     public var scoreLabel: SKLabelNode!
     public var lifesLabel: SKLabelNode!
     public var punctuation : Int = 0
@@ -88,6 +93,8 @@ class GameScene: SKScene {
     private var screenSize : CGSize!
         
     override func didMove(to view: SKView) {
+        self.writeLeaderboard()
+        self.getLeaderBoard()
         // Logic Variables init
         self.screenSize = self.frame.size
         self.physicsWorld.contactDelegate = self
@@ -113,7 +120,7 @@ class GameScene: SKScene {
         self.addChild(self.playerSprite)
         self.addChild(self.peachSprite)
         self.addChild(self.limitSprite)
-        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -200)))
+        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -225)))
         self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -550)))
         
         // Actions
@@ -201,7 +208,7 @@ extension GameScene {
     public func getLeaderBoard() {
         if let leaderboardObject = UserDefaults.standard.value(forKey: GameScene.LEADERBOARDKEY)  as? Data {
             do {
-                let calls = try JSONDecoder().decode([String].self, from: leaderboardObject)
+                let calls = try JSONDecoder().decode([LeadboardScore].self, from: leaderboardObject)
                 leaderBoardName.removeAll()
                 leaderBoardName.append(contentsOf: calls)
                 
@@ -211,9 +218,8 @@ extension GameScene {
         } else {
             print("Value not found")
         }
-        let temp = "\(punctuation) \(nickname)"
-        leaderBoardName.append(temp)
-        leaderBoardName = leaderBoardName.sorted { $0.lowercased() < $1.lowercased() }
+        leaderBoardName.append(LeadboardScore(score: punctuation, name: nickname))
+        leaderBoardName = leaderBoardName.sorted { $0.score > $1.score }
         if(leaderBoardName.count > 5) {
             leaderBoardName.remove(at: leaderBoardName.count - 1)
         }

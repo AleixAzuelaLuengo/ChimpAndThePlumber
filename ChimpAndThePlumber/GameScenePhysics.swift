@@ -92,6 +92,8 @@ extension GameScene: SKPhysicsContactDelegate {
             self.playerSprite.run(self.hammerAction, withKey: self.hammerActionKey)
             self.playerInmortal = true
             self.hammerSound.play()
+            self.punctuation += 100
+            self.scoreLabel.text = "SCORE: \(self.punctuation)"
             Timer.scheduledTimer(timeInterval: 3.5, target: self,
                                                   selector: #selector(stopHammer), userInfo: nil, repeats: false)
         }

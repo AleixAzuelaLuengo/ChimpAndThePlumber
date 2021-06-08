@@ -23,6 +23,8 @@
 		EFE14D79266CE08700C9C11D /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D78266CE08700C9C11D /* death.wav */; };
 		EFE14D7B266CE09300C9C11D /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D7A266CE09300C9C11D /* jump.wav */; };
 		EFE14D7D266CE0A200C9C11D /* walking.wav in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D7C266CE0A200C9C11D /* walking.wav */; };
+		EFE14D7F266FD86B00C9C11D /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFE14D7E266FD86B00C9C11D /* MainMenu.sks */; };
+		EFE14D83266FD8AC00C9C11D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE14D82266FD8AC00C9C11D /* MainMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		EFE14D78266CE08700C9C11D /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = death.wav; path = ../../../../../Downloads/death.wav; sourceTree = "<group>"; };
 		EFE14D7A266CE09300C9C11D /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = ../../../../../Downloads/jump.wav; sourceTree = "<group>"; };
 		EFE14D7C266CE0A200C9C11D /* walking.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = walking.wav; path = ../../../../../Downloads/walking.wav; sourceTree = "<group>"; };
+		EFE14D7E266FD86B00C9C11D /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		EFE14D82266FD8AC00C9C11D /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +82,10 @@
 			children = (
 				EFE14D6F266CDFD400C9C11D /* Sounds */,
 				EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */,
-				EFA1A03B263B1A4C00E6F692 /* GameScene.sks */,
 				EFA1A03D263B1A4C00E6F692 /* Actions.sks */,
+				EFE14D7E266FD86B00C9C11D /* MainMenu.sks */,
+				EFA1A03B263B1A4C00E6F692 /* GameScene.sks */,
+				EFE14D82266FD8AC00C9C11D /* MainMenu.swift */,
 				EFA1A03F263B1A4C00E6F692 /* GameScene.swift */,
 				EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */,
 				EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */,
@@ -164,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE14D7B266CE09300C9C11D /* jump.wav in Resources */,
+				EFE14D7F266FD86B00C9C11D /* MainMenu.sks in Resources */,
 				EFE14D71266CE06300C9C11D /* win2.wav in Resources */,
 				EFE14D73266CE06D00C9C11D /* bacmusic.wav in Resources */,
 				EFA1A045263B1A4C00E6F692 /* Main.storyboard in Resources */,
@@ -205,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA0A016265BD10B00E3107D /* GameSceneCreations.swift in Sources */,
+				EFE14D83266FD8AC00C9C11D /* MainMenu.swift in Sources */,
 				EFA1A040263B1A4C00E6F692 /* GameScene.swift in Sources */,
 				EFA0A01A265BF2DD00E3107D /* GameScenePhysics.swift in Sources */,
 				EFA1A042263B1A4C00E6F692 /* GameViewController.swift in Sources */,
