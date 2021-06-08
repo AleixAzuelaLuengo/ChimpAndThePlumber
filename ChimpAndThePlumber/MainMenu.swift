@@ -11,11 +11,17 @@ import SpriteKit
 
 class MainMenu : SKScene {
     public var scoreLabel: SKLabelNode!
+    public var gameView : GameViewController!
     override func didMove(to view: SKView) {
         self.scoreLabel = SKLabelNode(text: "INSERT COIN")
         self.scoreLabel.fontSize = 50
         self.scoreLabel.fontName = "Retro"
         self.scoreLabel.position = CGPoint(x: 0, y: -50)
         self.addChild(self.scoreLabel)
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        gameView.currentScene = 1
+        gameView.custommLoadScene()
     }
 }
