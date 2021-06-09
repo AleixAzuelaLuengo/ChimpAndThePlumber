@@ -10,69 +10,14 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    public var currentScene : Int = 0
+    public var currentScene : Int = 2
     @IBOutlet weak var splashScreen: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.splashScreen.removeFromSuperview()
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        
-//        if let scene = GKScene(fileNamed: "GameScene") {
-//            // Get the SKScene from the loaded GKScene
-//            guard let sceneNode = scene.rootNode as? GameScene else { return }
-//
-//            // Set the scale mode to scale to fit the window
-//            sceneNode.scaleMode = .aspectFill
-//
-//            // Present the scene
-//            guard let view = self.view as? SKView else { return }
-//
-//            view.presentScene(sceneNode)
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-        if(currentScene == 0){
-            if let scene = GKScene(fileNamed: "MainMenu") {
-                // Get the SKScene from the loaded GKScene
-                guard let sceneNode = scene.rootNode as? MainMenu else { return }
-                sceneNode.gameView = self
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFit
-                
-                // Present the scene
-                guard let view = self.view as? SKView else { return }
-                
-                view.presentScene(sceneNode)
-                
-                view.ignoresSiblingOrder = true
-                
-                view.showsFPS = true
-                view.showsNodeCount = true
-            }
-        }
-        if(currentScene == 1){
-            if let scene = GKScene(fileNamed: "GameView") {
-                // Get the SKScene from the loaded GKScene
-                guard let sceneNode = scene.rootNode as? MainMenu else { return }
-                sceneNode.gameView = self
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFit
-                
-                // Present the scene
-                guard let view = self.view as? SKView else { return }
-                
-                view.presentScene(sceneNode)
-                
-                view.ignoresSiblingOrder = true
-                
-                view.showsFPS = true
-                view.showsNodeCount = true
-            }
-        }
+        custommLoadScene()
 
     }
 
@@ -92,7 +37,7 @@ class GameViewController: UIViewController {
         return true
     }
     
-    public func custommLoadScene(){
+    public func custommLoadScene() {
         if(currentScene == 0) {
             if let scene = GKScene(fileNamed: "MainMenu") {
                 // Get the SKScene from the loaded GKScene
@@ -100,14 +45,10 @@ class GameViewController: UIViewController {
                 sceneNode.gameView = self
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFit
-                
                 // Present the scene
                 guard let view = self.view as? SKView else { return }
-                
-                view.presentScene(sceneNode)
-                
+                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
                 view.ignoresSiblingOrder = true
-                
                 view.showsFPS = true
                 view.showsNodeCount = true
             }
@@ -116,16 +57,28 @@ class GameViewController: UIViewController {
             if let scene = GKScene(fileNamed: "GameScene") {
                 // Get the SKScene from the loaded GKScene
                 guard let sceneNode = scene.rootNode as? GameScene else { return }
+                sceneNode.gameView = self
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFit
-                
                 // Present the scene
                 guard let view = self.view as? SKView else { return }
-                
                 view.presentScene(sceneNode)
-                
                 view.ignoresSiblingOrder = true
-                
+                view.showsFPS = true
+                view.showsNodeCount = true
+            }
+        }
+        if(currentScene == 2) {
+            if let scene = GKScene(fileNamed: "LaderBoard") {
+                // Get the SKScene from the loaded GKScene
+                guard let sceneNode = scene.rootNode as? LaderBoard else { return }
+                sceneNode.gameView = self
+                // Set the scale mode to scale to fit the window
+                sceneNode.scaleMode = .aspectFit
+                // Present the scene
+                guard let view = self.view as? SKView else { return }
+                view.presentScene(sceneNode)
+                view.ignoresSiblingOrder = true
                 view.showsFPS = true
                 view.showsNodeCount = true
             }

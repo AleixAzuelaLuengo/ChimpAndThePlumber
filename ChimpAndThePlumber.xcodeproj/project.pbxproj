@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF6BA2C626711F4700E72978 /* LaderBoard.sks in Resources */ = {isa = PBXBuildFile; fileRef = EF6BA2C526711F4700E72978 /* LaderBoard.sks */; };
+		EF6BA2C826711F5C00E72978 /* LaderBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6BA2C726711F5C00E72978 /* LaderBoard.swift */; };
+		EF6BA2CA26715F8200E72978 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF6BA2C926715F8200E72978 /* coin.wav */; };
 		EFA0A016265BD10B00E3107D /* GameSceneCreations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */; };
 		EFA0A01A265BF2DD00E3107D /* GameScenePhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */; };
 		EFA1A03A263B1A4C00E6F692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF6BA2C526711F4700E72978 /* LaderBoard.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LaderBoard.sks; sourceTree = "<group>"; };
+		EF6BA2C726711F5C00E72978 /* LaderBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaderBoard.swift; sourceTree = "<group>"; };
+		EF6BA2C926715F8200E72978 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = coin.wav; path = ../../../../../Downloads/coin.wav; sourceTree = "<group>"; };
 		EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneCreations.swift; sourceTree = "<group>"; };
 		EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePhysics.swift; sourceTree = "<group>"; };
 		EFA1A036263B1A4C00E6F692 /* ChimpAndThePlumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChimpAndThePlumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,8 +90,10 @@
 				EFA1A039263B1A4C00E6F692 /* AppDelegate.swift */,
 				EFA1A03D263B1A4C00E6F692 /* Actions.sks */,
 				EFE14D7E266FD86B00C9C11D /* MainMenu.sks */,
+				EF6BA2C526711F4700E72978 /* LaderBoard.sks */,
 				EFA1A03B263B1A4C00E6F692 /* GameScene.sks */,
 				EFE14D82266FD8AC00C9C11D /* MainMenu.swift */,
+				EF6BA2C726711F5C00E72978 /* LaderBoard.swift */,
 				EFA1A03F263B1A4C00E6F692 /* GameScene.swift */,
 				EFA0A015265BD10B00E3107D /* GameSceneCreations.swift */,
 				EFA0A019265BF2DD00E3107D /* GameScenePhysics.swift */,
@@ -101,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE14D7C266CE0A200C9C11D /* walking.wav */,
+				EF6BA2C926715F8200E72978 /* coin.wav */,
 				EFE14D7A266CE09300C9C11D /* jump.wav */,
 				EFE14D78266CE08700C9C11D /* death.wav */,
 				EFE14D76266CE07E00C9C11D /* itemget.wav */,
@@ -169,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6BA2CA26715F8200E72978 /* coin.wav in Resources */,
 				EFE14D7B266CE09300C9C11D /* jump.wav in Resources */,
 				EFE14D7F266FD86B00C9C11D /* MainMenu.sks in Resources */,
 				EFE14D71266CE06300C9C11D /* win2.wav in Resources */,
@@ -179,6 +189,7 @@
 				EFE14D75266CE07900C9C11D /* hammer.wav in Resources */,
 				EFA1A047263B1A4D00E6F692 /* Assets.xcassets in Resources */,
 				EFE14D77266CE07F00C9C11D /* itemget.wav in Resources */,
+				EF6BA2C626711F4700E72978 /* LaderBoard.sks in Resources */,
 				EFE14D79266CE08700C9C11D /* death.wav in Resources */,
 				EFA1A03E263B1A4C00E6F692 /* Actions.sks in Resources */,
 			);
@@ -217,6 +228,7 @@
 				EFA0A01A265BF2DD00E3107D /* GameScenePhysics.swift in Sources */,
 				EFA1A042263B1A4C00E6F692 /* GameViewController.swift in Sources */,
 				EFA1A03A263B1A4C00E6F692 /* AppDelegate.swift in Sources */,
+				EF6BA2C826711F5C00E72978 /* LaderBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

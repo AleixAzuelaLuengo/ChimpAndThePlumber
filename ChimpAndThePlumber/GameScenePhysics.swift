@@ -56,8 +56,8 @@ extension GameScene: SKPhysicsContactDelegate {
                     self.punctuation = 0
                     self.scoreLabel.text = "SCORE: \(self.punctuation)"
                 } else {
-                    // ENDGAME
-                    self.resetGame()
+                    gameView.currentScene = 2
+                    gameView.custommLoadScene()
                 }
             } else {
                 if(nameA == "Barrel") {
@@ -87,6 +87,12 @@ extension GameScene: SKPhysicsContactDelegate {
             return
         }
         if(oneNodeIsHammer && oneNodeIsPlayer && !self.playerInmortal) {
+            if(nameA == "Hammer") {
+                            nodeA.removeFromParent()
+                        }
+            if(nameB == "Hammer") {
+                nodeB.removeFromParent()
+            }
             self.playerSprite.run(self.powerUpSound)
             self.playerSprite.removeAction(forKey: self.walkActionKey)
             self.playerSprite.run(self.hammerAction, withKey: self.hammerActionKey)

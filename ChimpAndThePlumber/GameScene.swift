@@ -18,15 +18,15 @@ struct LeadboardScore : Codable {
 class GameScene: SKScene {
     // GameLoop Vars
     /// GameVars
+    public var gameView : GameViewController!
     static public let LEADERBOARDKEY = "com.enti.romannumeral.leaderboard"
     public var leaderBoardName = [LeadboardScore]()
     public var scoreLabel: SKLabelNode!
     public var lifesLabel: SKLabelNode!
     public var punctuation : Int = 0
-    public var lifes = 5
     private var nickname : String = ""
     /// Player Variables
-    private var playerLives : Int = 3
+    public var lifes : Int = 3
     public var playerInmortal : Bool = false
     private var playerForce : Int = 0
     public var playerJumping : Bool = false
@@ -106,7 +106,7 @@ class GameScene: SKScene {
         // Sprite init
         self.scoreLabel = SKLabelNode(text: "SCORE: 0")
         self.scoreLabel.position = CGPoint(x: 150, y: (self.size.height / 2) - 100)
-        self.lifesLabel = SKLabelNode(text: "LIVES LEFT: 5")
+        self.lifesLabel = SKLabelNode(text: "LIVES LEFT: \(lifes)")
         self.lifesLabel.position = CGPoint(x: -150, y: (self.size.height / 2) - 100)
         self.peachSprite = self.createPeach(at: CGPoint(x: -250, y: 300))
         self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
