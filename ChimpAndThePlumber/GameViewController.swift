@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    public var currentScene : Int = 2
+    public var currentScene : Int = 0
     @IBOutlet weak var splashScreen: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
                 sceneNode.scaleMode = .aspectFit
                 // Present the scene
                 guard let view = self.view as? SKView else { return }
-                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
+                view.presentScene(sceneNode)
                 view.ignoresSiblingOrder = true
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -62,7 +62,7 @@ class GameViewController: UIViewController {
                 sceneNode.scaleMode = .aspectFit
                 // Present the scene
                 guard let view = self.view as? SKView else { return }
-                view.presentScene(sceneNode)
+                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
                 view.ignoresSiblingOrder = true
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -77,7 +77,7 @@ class GameViewController: UIViewController {
                 sceneNode.scaleMode = .aspectFit
                 // Present the scene
                 guard let view = self.view as? SKView else { return }
-                view.presentScene(sceneNode)
+                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
                 view.ignoresSiblingOrder = true
                 view.showsFPS = true
                 view.showsNodeCount = true

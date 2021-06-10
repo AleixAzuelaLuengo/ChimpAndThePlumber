@@ -24,7 +24,7 @@ class GameScene: SKScene {
     public var scoreLabel: SKLabelNode!
     public var lifesLabel: SKLabelNode!
     public var punctuation : Int = 0
-    private var nickname : String = ""
+    private var nickname : String = "Presentacio"
     /// Player Variables
     public var lifes : Int = 3
     public var playerInmortal : Bool = false
@@ -93,8 +93,6 @@ class GameScene: SKScene {
     private var screenSize : CGSize!
         
     override func didMove(to view: SKView) {
-        self.writeLeaderboard()
-        self.getLeaderBoard()
         // Logic Variables init
         self.screenSize = self.frame.size
         self.physicsWorld.contactDelegate = self
@@ -198,10 +196,14 @@ class GameScene: SKScene {
 }
 
 extension GameScene {
-    public func cleanBarrels() {
+    public func cleanElements() {
         for node in children {
-            guard node.name == "Barrel" else { continue }
+            if( node.name == "Barrel" ) {
                 node.removeFromParent()
+            }
+            if( node.name == "Hammer" ) {
+                node.removeFromParent()
+            }
         }
     }
     
@@ -231,6 +233,7 @@ extension GameScene {
         do {
             let data = try JSONEncoder().encode(leaderBoardName)
             UserDefaults.standard.setValue(data, forKey: GameScene.LEADERBOARDKEY)
+            UserDefaults.standard.synchronize()
         } catch {
                 print(error)
         }
@@ -297,7 +300,7 @@ extension GameScene {
     
     func resetGame() {
         // remove player and barrels
-        cleanBarrels()
+        cleanElements()
         self.playerMovingLeft = false
         self.lookingLeft = true
         self.playerMovingRight = false
@@ -305,7 +308,8 @@ extension GameScene {
         self.punctuation = 0
         self.scoreLabel.text = "SCORE: 0"
         self.playerSprite = self.createMario(at: CGPoint(x: -250, y: -550))
-
+        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -225)))
+        self.addChild(self.createHammer(at: CGPoint(x: 50 , y: -550)))
         self.addChild(self.playerSprite)
     }
 }

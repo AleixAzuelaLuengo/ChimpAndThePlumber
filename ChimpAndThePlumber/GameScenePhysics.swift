@@ -25,8 +25,12 @@ extension GameScene: SKPhysicsContactDelegate {
             self.punctuation += lifes * 1000
             self.scoreLabel.text = "SCORE: \(punctuation)"
             self.playerSprite.run(self.completionSound)
-            self.resetGame()
+            self.walkSound.stop()
+            self.getLeaderBoard()
+            gameView.currentScene = 2
+            gameView.custommLoadScene()
             return
+            
         }
     }
     

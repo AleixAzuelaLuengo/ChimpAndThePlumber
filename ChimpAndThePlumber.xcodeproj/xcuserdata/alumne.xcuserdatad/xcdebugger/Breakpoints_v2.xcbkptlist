@@ -30,8 +30,8 @@
             filePath = "ChimpAndThePlumber/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
             <Actions>
@@ -54,25 +54,9 @@
             filePath = "ChimpAndThePlumber/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "cleanBarrels()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "27324318-8E9E-4975-95BE-4044D991EDF0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChimpAndThePlumber/GameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "getLeaderBoard()"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "cleanElements()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

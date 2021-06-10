@@ -21,32 +21,16 @@ class LaderBoard : SKScene {
     public var gameView : GameViewController!
     override func didMove(to view: SKView) {
         getLeaderBoard()
-        self.first = SKLabelNode(text: "")
-        self.second = SKLabelNode(text: "")
-        self.third = SKLabelNode(text: "")
-        self.fourth = SKLabelNode(text: "")
-        self.fifth = SKLabelNode(text: "")
-        self.first.text = " 1. \(leaderBoardName[0].name)  \(leaderBoardName[0].score)"
-        self.first.position = CGPoint(x: 0, y: 300)
-        self.first.fontSize = 75
-        self.second.text = " 2. \(leaderBoardName[1].name)  \(leaderBoardName[1].score)"
-        self.second.position = CGPoint(x: 0, y: 150)
-        self.second.fontSize = 75
-        self.third.text = " 3. \(leaderBoardName[2].name)  \(leaderBoardName[2].score)"
-        self.third.position = CGPoint(x: 0, y: 0)
-        self.third.fontSize = 75
-        self.fourth.text = " 4. \(leaderBoardName[3].name)  \(leaderBoardName[3].score)"
-        self.fourth.position = CGPoint(x: 0, y: -150)
-        self.fourth.fontSize = 75
-        self.fifth.text = " 5. \(leaderBoardName[4].name)  \(leaderBoardName[4].score)"
-        self.fifth.position = CGPoint(x: 0, y: -300)
-        self.fifth.fontSize = 75
-
-        self.addChild(self.first)
-        self.addChild(self.second)
-        self.addChild(self.third)
-        self.addChild(self.fourth)
-        self.addChild(self.fifth)
+        self.first = SKLabelNode(text: " ")
+        for aPosition in (0...Int(leaderBoardName.count - 1)) {
+//            self.first.text! +=
+            let label = SKLabelNode(text: "\(aPosition) " +
+                           "\(leaderBoardName[aPosition].name) " +
+                           "\(leaderBoardName[aPosition].score)")
+            label.position = CGPoint(x: 0, y: 300 - (100 * aPosition))
+            label.fontSize = 75
+            self.addChild(label)
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         gameView.currentScene = 1
@@ -78,6 +62,7 @@ class LaderBoard : SKScene {
         do {
             let data = try JSONEncoder().encode(leaderBoardName)
             UserDefaults.standard.setValue(data, forKey: GameScene.LEADERBOARDKEY)
+            UserDefaults.standard.synchronize()
         } catch {
                 print(error)
         }
