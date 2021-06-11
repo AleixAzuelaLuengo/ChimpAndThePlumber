@@ -10,18 +10,21 @@ import GameplayKit
 import AVFAudio
 import AVFoundation
 import SpriteKit
+import SwiftUI
 
 class MainMenu : SKScene {
     public var coinSound : AVAudioPlayer!
     public var backgroundMusic : AVAudioPlayer!
-    public var scoreLabel: SKLabelNode!
+    var textInput: UITextField!
+    @State private var username = "Example"
+    
     public var gameView : GameViewController!
     override func didMove(to view: SKView) {
         initSounds()
-        self.scoreLabel = SKLabelNode(text: "INSERT COIN")
-        self.scoreLabel.fontSize = 100
-        self.scoreLabel.position = CGPoint(x: 0, y: 500)
-        self.addChild(self.scoreLabel)
+        let scoreLabel = SKLabelNode(text: "INSERT COIN")
+        scoreLabel.fontSize = 100
+        scoreLabel.position = CGPoint(x: 0, y: 500)
+        self.addChild(scoreLabel)
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -43,7 +46,7 @@ class MainMenu : SKScene {
         } catch {
             print("Unable to load sound")
         }
-        self.coinSound.numberOfLoops = 1;
+        self.coinSound.numberOfLoops = 1
         self.backgroundMusic.numberOfLoops = -1
         self.backgroundMusic.play()
     }

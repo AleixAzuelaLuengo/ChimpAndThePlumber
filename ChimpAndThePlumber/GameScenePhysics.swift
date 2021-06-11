@@ -26,6 +26,7 @@ extension GameScene: SKPhysicsContactDelegate {
             self.scoreLabel.text = "SCORE: \(punctuation)"
             self.playerSprite.run(self.completionSound)
             self.walkSound.stop()
+            self.backgroundMusic.stop()
             self.getLeaderBoard()
             gameView.currentScene = 2
             gameView.custommLoadScene()
@@ -56,10 +57,13 @@ extension GameScene: SKPhysicsContactDelegate {
                     self.playerSprite.run(self.deathSound)
                     self.lifes -= 1
                     self.lifesLabel.text = "LIVES LEFT: \(self.lifes)"
+                    self.getLeaderBoard()
                     self.resetGame()
                     self.punctuation = 0
                     self.scoreLabel.text = "SCORE: \(self.punctuation)"
                 } else {
+                    self.walkSound.stop()
+                    self.getLeaderBoard()
                     gameView.currentScene = 2
                     gameView.custommLoadScene()
                 }
@@ -124,7 +128,11 @@ extension GameScene: SKPhysicsContactDelegate {
                     self.scoreLabel.text = "SCORE: \(self.punctuation)"
                 } else {
                     // ENDGAME
-                    self.resetGame()
+                    self.backgroundMusic.stop()
+                    self.walkSound.stop()
+                    self.getLeaderBoard()
+                    gameView.currentScene = 2
+                    gameView.custommLoadScene()
                 }
             }
             return

@@ -39,48 +39,40 @@ class GameViewController: UIViewController {
     
     public func custommLoadScene() {
         if(currentScene == 0) {
-            if let scene = GKScene(fileNamed: "MainMenu") {
-                // Get the SKScene from the loaded GKScene
-                guard let sceneNode = scene.rootNode as? MainMenu else { return }
-                sceneNode.gameView = self
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFit
-                // Present the scene
-                guard let view = self.view as? SKView else { return }
-                view.presentScene(sceneNode)
-                view.ignoresSiblingOrder = true
-                view.showsFPS = true
-                view.showsNodeCount = true
-            }
+            loadScene(name: "MainMenu")
         }
         if(currentScene == 1) {
-            if let scene = GKScene(fileNamed: "GameScene") {
-                // Get the SKScene from the loaded GKScene
-                guard let sceneNode = scene.rootNode as? GameScene else { return }
-                sceneNode.gameView = self
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFit
-                // Present the scene
-                guard let view = self.view as? SKView else { return }
-                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
-                view.ignoresSiblingOrder = true
-                view.showsFPS = true
-                view.showsNodeCount = true
-            }
+            loadScene(name: "GameScene")
         }
         if(currentScene == 2) {
-            if let scene = GKScene(fileNamed: "LaderBoard") {
-                // Get the SKScene from the loaded GKScene
+            loadScene(name: "LaderBoard")
+        }
+    }
+    
+    func loadScene(name : String) {
+        if let scene = GKScene(fileNamed: name) {
+            guard let view = self.view as? SKView else { return }
+            view.ignoresSiblingOrder = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+            // Get the SKScene from the loaded GKScene
+            if(self.currentScene == 0) {
+                guard let sceneNode = scene.rootNode as? MainMenu else { return }
+                sceneNode.gameView = self
+                sceneNode.scaleMode = .aspectFit
+                view.presentScene(sceneNode)
+            }
+            if(self.currentScene == 1) {
+                guard let sceneNode = scene.rootNode as? GameScene else { return }
+                sceneNode.gameView = self
+                sceneNode.scaleMode = .aspectFit
+                view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
+            }
+            if(self.currentScene == 2) {
                 guard let sceneNode = scene.rootNode as? LaderBoard else { return }
                 sceneNode.gameView = self
-                // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFit
-                // Present the scene
-                guard let view = self.view as? SKView else { return }
                 view.presentScene(sceneNode, transition: SKTransition.doorsCloseHorizontal(withDuration: 1))
-                view.ignoresSiblingOrder = true
-                view.showsFPS = true
-                view.showsNodeCount = true
             }
         }
     }
